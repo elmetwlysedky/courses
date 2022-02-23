@@ -17,6 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('country');
+            $table->string('photo') ->nullable();
+            $table->boolean('is_teacher'); // 0 = student , 1 = teacher
+            $table->boolean('gender');// 0 = "female" , 1 = "male"
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
