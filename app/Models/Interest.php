@@ -10,11 +10,7 @@ class Interest extends Model
     use HasFactory;
     protected $fillable = ['name'];
 
-    public function teacher(){
-        return $this->hasMany(Teacher::class , 'teacher_id');
-    }
-
-    public function student(){
-        return $this->hasMany(Student::class , 'student_id');
-    }
+  public function users(){
+      return $this->belongsToMany(User::class,'user_interests');
+  }
 }

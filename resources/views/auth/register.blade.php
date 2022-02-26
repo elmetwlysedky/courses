@@ -82,16 +82,15 @@
         <div class="container">
             <div class="up-form">
 
-                <form method="POST" action="{{ route('register') }}">
+                <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="up_form-item">
                         <span id="error-form">من فضلك ادخل البيانات الصحيحة</span>
                         <input name="name" type="text" placeholder="الإسم بالكامل">
                     </div>
-                    <!-- /.up_form-item -->
-{{--                    <div class="up_form-item">--}}
-{{--                        <input type="text" placeholder="إسم المستخدم">--}}
-{{--                    </div>--}}
+
                     <!-- /.up_form-item -->
                     <div class="up_form-item">
                         <input name="email" type="email" placeholder="البريد الإلكتروني">
@@ -142,24 +141,29 @@
                     <div class="up_form-item">
                         <select name="gender">
                             <option selected disabled >الجنس ...</option>
-                            <option value="male" >مذكر</option>
-                            <option value="female">مؤنث</option>
+                            <option value="1" >مذكر</option>
+                            <option value="0">مؤنث</option>
                         </select>
                     </div>
+
+                    <div class="up_form-item">
+                        <input name="avatar" type="file" placeholder="الصورة الشخصيه ">
+                    </div>
+
                     <!-- /.up_form-item -->
                     <div class="up_form-item text-right">
                         <label>
-                            <input name="role" value="teacher" type="checkbox">
+                            <input name="is_teacher" value="1" type="checkbox">
                             <span>مدرب</span>
                             <a href="trainer-privacy.html" class="show-privacy">تعرف علي سياسة الخصوصية كمدرب</a>
                         </label>
                         <label>
-                            <input name="role" value="student" type="checkbox">
+                            <input name="is_teacher" value="0" type="checkbox">
                             <span>متدرب</span>
                             <a href="trainer-privacy.html" class="show-privacy">تعرف علي سياسة الخصوصية كمتدرب</a>
                         </label>
                         <label>
-                            <input name="role" value="two" type="checkbox">
+                            <input name="is_teacher" value="1" type="checkbox">
                             <span>كلاهما</span>
                         </label>
                     </div>

@@ -28,8 +28,8 @@ class Course extends Model
         return $this->hasMany(Lesson::class , 'course_id');
     }
 
-    public function student(){
-        return $this->belongsToMany(Student::class,'course_students');
+    public function user(){
+        return $this->belongsToMany(User::class,'course_user');
     }
     public function comment(){
         return $this->hasMany(CommentCourse::class,'course_id');

@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
@@ -38,19 +39,24 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' =>['required','string','max:15'],
             'country' =>['required','string','max:225'],
-            'role' =>['required','string'],
+            'is_teacher' =>['required'],
             'gender' =>['required','string'],
+            'avatar' =>['image','max:2048'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        if($request->avatar != null)
+            $path = $request->file('avatar')->store('avatars',);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'country' => $request->country,
-            'role' => $request->role,
+            'is_teacher' => $request->is_teacher,
             'gender' => $request->gender,
-            'password' => Hash::make($request->password),
+            'avatar' => $path,
+           'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));

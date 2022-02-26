@@ -8,14 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function login(){
+    public function create()
+    {
         return view('Dashboard.login');
     }
 
-    public function admin_login(Request  $request){
+    public function store(Request  $request){
 
         $this->validate($request,[
-            'email' => 'required|string|email',
+            'email' => 'required|string|email|max:225',
             'password' => 'required|string'
         ]);
 
@@ -25,4 +26,17 @@ class LoginController extends Controller
         }
         return back()->withInput($request->only('email'));
     }
+
+
+    public function destroy(Request $request)
+    {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('dashboard.login');
+    }
+
 }

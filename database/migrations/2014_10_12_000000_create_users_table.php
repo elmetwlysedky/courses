@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('country');
-            $table->string('photo') ->nullable();
+            $table->string('avatar') ->nullable();
             $table->boolean('is_teacher'); // 0 = student , 1 = teacher
             $table->boolean('gender');// 0 = "female" , 1 = "male"
             $table->timestamp('email_verified_at')->nullable();

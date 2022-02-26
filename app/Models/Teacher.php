@@ -12,14 +12,10 @@ class Teacher extends Model
         'degree',
         'specialization',
         'employment',
-        'photo',
-        'interest_id',
         'user_id',
     ];
 
-    public function interest(){
-        return $this->belongsTo(Interest::class , 'interest_id');
-    }
+
 
     public function user(){
         return $this->belongsTo(User::class , 'user_id');

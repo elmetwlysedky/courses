@@ -13,15 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
 
-});
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+//Route::get('/',  function () {
+//    return view('Site.index');
+//
+//});
+
+
+//Route::get('verify', function () {
+//    return view('auth.verify-email');
+//
+//});
 
     Route::group(
-        ['prefix' =>'site', 'namespace' => 'App\Http\Controllers\Site'],function() {
+        [ 'namespace' => 'App\Http\Controllers\Site' ,'middleware'=>'verified'],function() {
 
-        Route::get('index', 'HomeController@index');
+        Route::get('/', 'HomeController@index');
     });
 
 require __DIR__.'/auth.php';

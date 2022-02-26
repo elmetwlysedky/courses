@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,10 +22,19 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
+        'avatar',
         'country',
-        'role',
+        'is_teacher',
         'gender',
     ];
+//protected $appends =['teacher_string'];
+//
+//    public function getTeacherStringAttribute(){
+//        $arr=['0' => 'student',
+//            '1' => 'teacher',
+//        ];
+//        return $arr[$this->is_teacher];
+//    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -48,5 +57,13 @@ class User extends Authenticatable
 
     public function comment(){
         return $this->hasMany(CommentCourse::class, 'user_id');
+    }
+
+    public function interests(){
+        return $this->belongsToMany(Interest::class,'user_interests');
+    }
+
+    public function user_lessons(){
+        return $this->belongsToMany(Lesson::class,'lesson_student');
     }
 }
