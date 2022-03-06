@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
+use App\Models\Country;
 
 class RegisteredUserController extends Controller
 {
@@ -21,7 +22,10 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+
+        return view('auth.register',[
+            'country'=> Country::all()
+        ]);
     }
 
     /**
@@ -38,21 +42,22 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' =>['required','string','max:15'],
-            'country' =>['required','string','max:225'],
+            'country_id' =>['required','string','max:225'],
             'is_teacher' =>['required'],
             'gender' =>['required','string'],
             'avatar' =>['image','max:2048'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        if($request->avatar != null)
-            $path = $request->file('avatar')->store('avatars',);
+        if($request->avatar != null) {
 
+            $path = $request->file('avatar')->store('avatars',);
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'country' => $request->country,
+            'country_id' => $request->country_id,
             'is_teacher' => $request->is_teacher,
             'gender' => $request->gender,
             'avatar' => $path,
@@ -62,6 +67,10 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+//        if($user()->is_teacher() == 1){
+//            return view('Site.profile.index');
+//        }
 
         return redirect(RouteServiceProvider::HOME);
     }

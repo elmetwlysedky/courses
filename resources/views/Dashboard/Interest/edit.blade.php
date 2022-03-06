@@ -1,14 +1,14 @@
 @extends('Dashboard.Layouts.master')
 
 @section('title')
-    Interest edit
+   تعديل الاهتمام
 @endsection
 
 @section('content')
     <!-- Form validation -->
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Create Interest</h5>
+            <h5 class="card-title">تعديل {{$interest ->name}}</h5>
             <div class="header-elements">
                 <div class="list-icons">
                     <a class="list-icons-item" data-action="collapse"></a>
@@ -36,7 +36,7 @@
 @include('Dashboard.Interest.form')
 
                 <div class="d-flex justify-content-end align-items-center">
-                    <button type="submit" class="btn bg-teal ml-3">update</button>
+                    <button type="submit" class="btn bg-teal ml-3">حفظ</button>
                 </div>
             {!! Form::close() !!}
         </div>

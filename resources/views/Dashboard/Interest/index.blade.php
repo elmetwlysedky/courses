@@ -1,7 +1,7 @@
 @extends('Dashboard.Layouts.master')
 
 @section('title')
-    Interest
+    الاهتمامات
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <!-- Basic datatable -->
     <div class="card"	>
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Interest Table</h5>
+            <h5 class="card-title">جدول الاهتمامات</h5>
             <div class="header-elements">
                 <div class="list-icons">
                     <a class="list-icons-item" data-action="collapse"></a>
@@ -22,7 +22,7 @@
         <div class="card-body">
             <a href="{{route('interest.create')}}">
             <button class="btn bg-teal "><b><i class="icon-plus3"></i></b>
-                Create
+             اضافة اهتمام
             </button>
             </a>
         </div>
@@ -30,8 +30,8 @@
         <table class="table datatable-basic">
             <thead>
             <tr>
-                <th> Name</th>
-                <th class="text-center">Actions</th>
+                <th> الاسم</th>
+                <th class="text-center">العمليات</th>
             </tr>
             </thead>
             <tbody>
@@ -49,13 +49,13 @@
 
                             <div class="dropdown-menu ">
 {{--                                <a href="{{route('interest.edit')}}" class="dropdown-item"><i class="icon-file-eye2 mr-3 icon"></i> show </a>--}}
-                                <a href="{{route('interest.edit',$item->id)}}"class="dropdown-item"><i class="icon-pencil7"></i> Edit </a>
+                                <a href="{{route('interest.edit',$item->id)}}"class="dropdown-item"><i class="icon-pencil7"></i> تعديل </a>
 
                                 <form action="{{route('interest.destroy',$item->id)}}" method="POST" >
                                     @csrf
                                     @method('DELETE')
 
-                                    <button class="dropdown-item" type="submit"><i class="icon-bin"> </i>move to trash</button>
+                                    <button class="dropdown-item" type="submit"><i class="icon-bin"> </i>حذف</button>
                                 </form>
 
                             </div>

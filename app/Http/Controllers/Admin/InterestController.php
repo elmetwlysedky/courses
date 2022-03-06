@@ -27,7 +27,7 @@ class InterestController extends Controller
     {
         $request->validate(['name'=>'required|string|max:225']);
         Interest::create($request->all());
-        return redirect()->route('interest.index');
+        return redirect()->back();//route('interest.index');
     }
 
 

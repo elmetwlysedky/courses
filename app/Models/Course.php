@@ -10,9 +10,10 @@ class Course extends Model
     use HasFactory;
     protected $fillable = [
         'title',
-        'requirement',
+        'requirements',
         'video_intro',
-        'free_or_not',
+        'free',
+        'active',
         'description',
         'gender',
         'price',
@@ -31,6 +32,11 @@ class Course extends Model
     public function user(){
         return $this->belongsToMany(User::class,'course_user');
     }
+
+    public function interests(){
+        return $this->belongsToMany(Interest::class,'course_interests');
+    }
+
     public function comment(){
         return $this->hasMany(CommentCourse::class,'course_id');
     }

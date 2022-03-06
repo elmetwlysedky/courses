@@ -3,7 +3,7 @@
 
     <!-- Basic text input -->
     <div class="form-group row">
-        <label class="col-form-label col-lg-3">Basic text input <span class="text-danger">*</span></label>
+        <label class="col-form-label col-lg-3">الاسم <span class="text-danger">*</span></label>
         <div class="col-lg-9">
             {!!Form::text('name', null,['class'=>'form-control','placeholder'=>'Inter Interest Name'])!!}
         </div>

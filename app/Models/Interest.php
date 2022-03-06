@@ -11,6 +11,10 @@ class Interest extends Model
     protected $fillable = ['name'];
 
   public function users(){
-      return $this->belongsToMany(User::class,'user_interests');
+      return $this->belongsToMany(UserInterest::class,'user_interests');
   }
+
+    public function courses(){
+        return $this->belongsToMany(Course::class,'course_interests');
+    }
 }

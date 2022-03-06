@@ -23,18 +23,25 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'phone',
         'avatar',
-        'country',
+        'country_id',
         'is_teacher',
         'gender',
     ];
-//protected $appends =['teacher_string'];
-//
-//    public function getTeacherStringAttribute(){
-//        $arr=['0' => 'student',
-//            '1' => 'teacher',
-//        ];
-//        return $arr[$this->is_teacher];
-//    }
+protected $appends =['teacher_string','gender_string'];
+
+    public function getTeacherStringAttribute(){
+        $arr=['0' => 'متدرب',
+            '1' => 'مدرب',
+        ];
+        return $arr[$this->is_teacher];
+    }
+
+    public function getGenderStringAttribute(){
+        $arr=['0' => 'انثى',
+            '1' => 'رجل',
+        ];
+        return $arr[$this->gender];
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -65,5 +72,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function user_lessons(){
         return $this->belongsToMany(Lesson::class,'lesson_student');
+    }
+
+    public function country(){
+        return $this->belongsTo(Country::class,'country_id');
+    }
+
+    public function teacher(){
+        return $this->hasOne(Teacher::class , 'user_id');
     }
 }

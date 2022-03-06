@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->text('requirements')->nullable();
             $table->string('video_intro')->nullable();
-            $table->boolean('free');
+            $table->boolean('free');//0 = free  , 1 = not free
+            $table->boolean('active');//0 = yes  , 1 = no
             $table->longText('description');
             $table->enum('gender',['male','female','all']);
             $table->decimal('price',10,4);

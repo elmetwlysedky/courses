@@ -22,6 +22,7 @@
     <link href="/App/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="/App/css/owl.carousel.css" rel="stylesheet" type="text/css">
     <link href="/App/css/owl.theme.css" rel="stylesheet" type="text/css">
+    <link href="/App/css/bootstrap.vertical-tabs.css" rel="stylesheet" type="text/css">
     <link href="/App/css/selectric.css" rel="stylesheet" type="text/css">
     <link href="/App/css/style.css" rel="stylesheet" type="text/css">
     <link href="/App/css/reset.css" rel="stylesheet" type="text/css">
@@ -80,9 +81,10 @@
         <div class="container">
             <div class="login-form col-md-6 col-xs-12 text-right pull-right">
                 <form action="{{route('login')}}" method="post">
+                    @csrf
                 <h1>تسجيل الدخول</h1>
                 <div class="login-item">
-                    <input name="name" type="text" placeholder="إسم المستخدم">
+                    <input name="email" type="text" placeholder="البريد الالكتروني">
                 </div>
                 <!-- /.login-item -->
                 <div class="login-item">
@@ -158,13 +160,157 @@
                 <div class="user-controls">
                     <ul>
                         <li>
+                            @if(! auth()->user())
                             <a href="#" class="show-login">
                                 <i class="fa fa-user"></i> منطقة تسجيل الدخول
                             </a>
+                            @else
+                                    <div class="user-logged">
+                                        <ul>
+                                            <li>
+                                                <a href="#" data-toggle="dropdown" class="hvr-underline-reveal ">
+                                                <span class="cont-img">
+                                                    <img src="/storage/{{auth()->user()->avatar}}" width="35" height="35" alt="">
+                                                </span>
 
-                            <a  class="show-login">{{$date = date('H:i:s', time()) }} </a>
+                                                    <b>{{auth()->user()->name}} </b>
+                                                    <i class="fa fa-caret-down"></i>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                                    <div class="drop drop-links col-xs-12">
+                                                        <div class="drop-links">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="{{route('profile')}}">
+                                                                        <i class="fa fa-user"></i>&nbsp; حسابي
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+
+                                                                    <a href="#">
+                                                                        <form class="navbar-nav-link" action="{{route('logout')}}" method="POST">
+                                                                            @csrf
+                                                                            <button class="fa fa-power-off" type="submit"></button>
+
+                                                                        </form>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- end drop-links -->
+                                                    </div>
+                                                    <!-- end drop -->
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="show-user_search">
+                                                    <i class="fa fa-search"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="show-notification" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-bell"></i>
+                                                </a>
+                                                <ul class="dropdown-menu notification-box" role="menu" aria-labelledby="dropdownMenu">
+                                                    <div class="drop drop-links col-xs-12">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <img src="images/avatar5.png" alt="" class="img-circle pull-right">
+                                                                    <h4>
+                                                                        امير ناجح
+                                                                        <small><i class="fa fa-clock-o"></i>5 دقائق</small>
+                                                                    </h4>
+                                                                    <p> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <img src="images/avatar04.png" alt="" class="img-circle pull-right">
+                                                                    <h4>
+                                                                        حسني اديب
+                                                                        <small><i class="fa fa-clock-o"></i>5 دقائق</small>
+                                                                    </h4>
+                                                                    <p> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <img src="images/avatar3.png" alt="" class="img-circle pull-right">
+                                                                    <h4>
+                                                                        مني سلامة
+                                                                        <small><i class="fa fa-clock-o"></i>5 دقائق</small>
+                                                                    </h4>
+                                                                    <p> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <img src="images/b3.jpg" alt="" class="img-circle pull-right">
+                                                                    <h4>
+                                                                        امير ناجح
+                                                                        <small><i class="fa fa-clock-o"></i>5 دقائق</small>
+                                                                    </h4>
+                                                                    <p> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <img src="images/avatar04.png" alt="" class="img-circle pull-right">
+                                                                    <h4>
+                                                                        حسني اديب
+                                                                        <small><i class="fa fa-clock-o"></i>5 دقائق</small>
+                                                                    </h4>
+                                                                    <p> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <img src="images/avatar3.png" alt="" class="img-circle pull-right">
+                                                                    <h4>
+                                                                        مني سلامة
+                                                                        <small><i class="fa fa-clock-o"></i>5 دقائق</small>
+                                                                    </h4>
+                                                                    <p> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- end drop -->
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <!-- /.user-controls -->
+
+
+                            @endif                            <!-- /.nav-user -->
+
+
+                                <div class="input-container user-search col-md-12 col-xs-12 input-lft">
+                                    <div class="container">
+                                        <input type="text" placeholder="ابحث عن جميع الكورسات من هنا">
+                                        <button type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.container -->
+                                </div>
+
+
+{{--                            <a>{{$date = date('H:i:s', time()) }} </a>--}}
 
                         </li>
+
+
+
+
+
+
+
+
                         <!--
                 <li>
 <a href="#">

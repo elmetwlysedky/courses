@@ -12,6 +12,7 @@ class Teacher extends Model
         'degree',
         'specialization',
         'employment',
+        'cv',
         'user_id',
     ];
 
@@ -20,10 +21,11 @@ class Teacher extends Model
     public function user(){
         return $this->belongsTo(User::class , 'user_id');
     }
-    public function course(){
-        return $this->hasMany(Course::class,'teacher_id');
-    }
+
     public function message(){
         return $this->hasMany(MessageSender::class,'teacher_id');
+    }
+    public function courses(){
+        return $this->hasMany(Course::class,'teacher_id');
     }
 }

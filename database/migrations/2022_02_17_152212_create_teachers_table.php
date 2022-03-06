@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('degree')->nullable();
             $table->string('specialization')->nullable();
             $table->string('employment');
+            $table->string('cv')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });

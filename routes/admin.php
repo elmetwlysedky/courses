@@ -18,8 +18,14 @@ use Illuminate\Support\Facades\Auth;
                 Route::get('/' , 'HomeController@index')->name('admin.home');
 
                 Route::resource('interest', 'InterestController');
+                Route::resource('country', 'CountryController');
+                Route::resource('user', 'UserController');
+                Route::resource('userInterest', 'UserInterestsController');
+                Route::resource('teacher', 'TeacherController');
+                Route::resource('course', 'CourseController');
+                Route::resource('lesson', 'LessonController');
 
 
 
 
-        });
+    });

@@ -219,7 +219,7 @@
             <li class="nav-item dropdown dropdown-user">
                 <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
                     <img src="../../../../global_assets/images/placeholders/placeholder.jpg" class="rounded-circle mr-2" height="34" alt="">
-                    <span>Victoria</span>
+                    <span>{{auth()->user()->name}}</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -229,9 +229,9 @@
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
 {{--                    <a href="{{route('logout')}}" class="dropdown-item"><i class="icon-switch2"></i>logout</a>--}}
-                        <form class="navbar-nav-link" action="{{route('logout')}}" method="POST">
+                        <form class="navbar-nav-link" action="{{route('dashboard.logout')}}" method="POST">
                             @csrf
-                            <button type="submit"><i class="icon-switch2"></i></button>
+                            <button class="icon-switch2" type="submit"></button>
 
                         </form>
                 </div>

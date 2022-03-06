@@ -29,9 +29,9 @@
                     </div>
 
                     <div class="media-body">
-                        <div class="media-title font-weight-semibold">Victoria Baker</div>
+                        <div class="media-title font-weight-semibold">{{auth()->user()->name}}</div>
                         <div class="font-size-xs opacity-50">
-                            <i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA
+                            <i class="icon-pin font-size-sm"></i> &nbsp;{{auth()->user()->email}}
                         </div>
                     </div>
 
@@ -51,69 +51,70 @@
                 <!-- Main -->
                 <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link active">
+                    <a href="{{route('admin.home')}}" class="nav-link active">
                         <i class="icon-home4"></i>
-                        <span>
-									Dashboard
-								</span>
+                        <span>الصفة الرئيسيه</span>
+
                     </a>
                 </li>
+
                 <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-pencil3"></i> <span>Interest</span></a>
+                    <a href="#" class="nav-link"><i class="icon-users mr-3"></i> <span>المستخدمين</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
 
-                        <li class="nav-item"><a href="{{route('interest.index')}}" class="nav-link">List Interest</a></li>
-                        <li class="nav-item"><a href="{{route('interest.create')}}" class="nav-link">Create Interest</a></li>
+                        <li class="nav-item"><a href="{{route('user.index')}}" class="nav-link">قائمة المستخدمين</a></li>
+                        <li class="nav-item"><a href="{{route('user.create')}}" class="nav-link">انشاء مستخدم جديد</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-pencil3"></i> <span>الاهتمامات</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+
+                        <li class="nav-item"><a href="{{route('interest.index')}}" class="nav-link">قائمة الاهتمامات</a></li>
+                        <li class="nav-item"><a href="{{route('interest.create')}}" class="nav-link">اضافة اهتمام</a></li>
 
                     </ul>
                 </li>
                 <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Themes</span></a>
-
+                    <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>الدول</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Themes">
+                        <li class="nav-item"><a href="{{route('country.index')}}" class="nav-link">قائمة الدول</a></li>
+                        <li class="nav-item"><a href="{{route('country.create')}}" class="nav-link">اضافة دوله</a></li>
+
                     </ul>
                 </li>
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-stack"></i> <span>Starter kit</span></a>
 
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-pencil3"></i> <span>اهتمامات المستحدمين </span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+
+                        <li class="nav-item"><a href="{{route('userInterest.index')}}" class="nav-link">قائمة اهتمامات المستحدمين</a></li>
+                        <li class="nav-item"><a href="{{route('userInterest.create')}}" class="nav-link">اضافة اهتمام للمستحدم</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-stack"></i> <span>المدربين</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="changelog.html" class="nav-link">
-                        <i class="icon-list-unordered"></i>
-                        <span>Changelog</span>
-                        <span class="badge bg-blue-400 align-self-center ml-auto">2.2</span>
-                    </a>
-                </li>
-                <li class="nav-item"><a href="../../../LTR/default/full/index.html" class="nav-link"><i class="icon-width"></i> <span>LTR version</span></a></li>
-                <!-- /main -->
-
-                <!-- Forms -->
-                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Forms</div> <i class="icon-menu" title="Forms"></i></li>
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-pencil3"></i> <span>Form components</span></a>
-                    <ul class="nav nav-group-sub" data-submenu-title="Form components">
-                    </ul>
-                </li>
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-file-css"></i> <span>JSON forms</span></a>
-                    <ul class="nav nav-group-sub" data-submenu-title="JSON forms">
+                        <li class="nav-item"><a href="{{route('teacher.index')}}" class="nav-link">قائمة المدربين</a></li>
+                        <li class="nav-item"><a href="{{route('teacher.create')}}" class="nav-link">اضافة مدرب</a></li>
 
                     </ul>
                 </li>
+
+
                 <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-spell-check"></i> <span>Text editors</span></a>
-                    <ul class="nav nav-group-sub" data-submenu-title="Text editors">
+                    <a href="#" class="nav-link"><i class="icon-clapboard-play mr-3"></i> <span>الكورسات</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Starter kit">
+                        <li class="nav-item"><a href="{{route('course.index')}}" class="nav-link">قائمة الكورسات</a></li>
+                        <li class="nav-item"><a href="{{route('course.create')}}" class="nav-link">اضافة كورس</a></li>
 
                     </ul>
                 </li>
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-select2"></i> <span>Pickers</span></a>
-                    <ul class="nav nav-group-sub" data-submenu-title="Pickers">
 
-                    </ul>
-                </li>
                 <!-- /forms -->
 
 

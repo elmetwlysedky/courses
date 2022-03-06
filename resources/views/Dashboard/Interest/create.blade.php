@@ -1,14 +1,14 @@
 @extends('Dashboard.Layouts.master')
 
 @section('title')
-    Interest create
+   اضافة اهتمام
 @endsection
 
 @section('content')
 <!-- Form validation -->
 <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">Create Interest</h5>
+        <h5 class="card-title">اضافة اهتمام</h5>
         <div class="header-elements">
             <div class="list-icons">
                 <a class="list-icons-item" data-action="collapse"></a>
