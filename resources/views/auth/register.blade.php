@@ -57,7 +57,7 @@
                     </div>
                     <!-- /.up_form-item -->
                     <div class="up_form-item">
-                        <select name="gender_string">
+                        <select name="gender">
                             <option selected disabled >الجنس ...</option>
                             <option value="1" >مذكر</option>
                             <option value="0">مؤنث</option>

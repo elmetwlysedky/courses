@@ -1,7 +1,6 @@
 @extends('Site.Layouts.master')
 
 
-
 @section('content')
     <div class="profile-content empty-course">
         <div class="container">
@@ -23,11 +22,7 @@
                                 <i class="fa fa-lock"></i> كلمة المرور
                             </a>
                         </li>
-                        <li role="presentation">
-                            <a href="#courses" aria-controls="courses" role="tab" data-toggle="tab">
-                                <i class="fa fa-database"></i> الدورات
-                            </a>
-                        </li>
+
 
                         <li role="presentation">
                             <a href="#interests" aria-controls="interests" role="tab" data-toggle="tab">
@@ -35,11 +30,7 @@
                             </a>
                         </li>
 
-                        <li role="presentation">
-                            <a href="#cv" aria-controls="cv" role="tab" data-toggle="tab">
-                                <i class="fa fa-file-text-o"></i> السيرة الذاتية
-                            </a>
-                        </li>
+
                         <li role="presentation">
                             <a href="#all-courses" aria-controls="all-courses" role="tab" data-toggle="tab">
                                 <i class="fa fa-eye"></i> تصفح الدورات
@@ -47,13 +38,13 @@
                         </li>
                         <li role="presentation">
                             <a href="#my_courses" aria-controls="my_courses" role="tab" data-toggle="tab">
-                                <i class="fa fa-folder-open-o"></i> دوراتي كمتدرب
+                                <i class="fa fa-folder-open-o"></i> دوراتي
                             </a>
                         </li>
 
                         <li role="presentation">
                             <a href="#my_certf" aria-controls="my_certf" role="tab" data-toggle="tab">
-                                <i class="fa fa-table"></i> شهاداتي كمتدرب
+                                <i class="fa fa-table"></i> شهاداتي
                             </a>
                         </li>
 
@@ -78,11 +69,7 @@
                                 <i class="fa fa-lock"></i>
                             </a>
                         </li>
-                        <li role="presentation">
-                            <a href="#courses" aria-controls="courses" role="tab" data-toggle="tab" title="الدورات">
-                                <i class="fa fa-database"></i>
-                            </a>
-                        </li>
+
 
                         <li role="presentation">
                             <a href="#interests" aria-controls="interests" role="tab" data-toggle="tab" title="الاهتمامات">
@@ -91,18 +78,13 @@
                         </li>
 
                         <li role="presentation">
-                            <a href="#cv" aria-controls="cv" role="tab" data-toggle="tab" title="السيرة الذاتية">
-                                <i class="fa fa-file-text-o"></i>
-                            </a>
-                        </li>
-                        <li role="presentation">
                             <a href="#all-courses" aria-controls="all-courses" role="tab" data-toggle="tab" title="تصفح الدورات">
                                 <i class="fa fa-eye"></i>
                             </a>
                         </li>
 
                         <li role="presentation">
-                            <a href="#my_courses" aria-controls="my_courses" role="tab" data-toggle="tab" title="دوراتي كمتدرب">
+                            <a href="#my_courses" aria-controls="my_courses" role="tab" data-toggle="tab" title="دوراتي ">
                                 <i class="fa fa-folder-open-o"></i>
                             </a>
                         </li>
@@ -126,6 +108,7 @@
                                         <i class="fa fa-cog"></i>
                                         تعديل البيانات
                                     </a>
+
                                     <button class="cancel-personal" type="reset">
                                         <i class="fa fa-times"></i>
                                         إلغاء التعديل
@@ -195,7 +178,7 @@
                                                 <i class="fa fa-globe"></i>
                                                 <h1>الدولة</h1>
                                                 <input type="text" id="edit-area" placeholder="الدولة">
-                                                <span>{{auth()->user()->country}}</span>
+                                                <span>{{auth()->user()->country->name}}</span>
                                             </div>
                                         </div>
                                         <!-- /.home_data-item -->
@@ -223,7 +206,7 @@
                                                 <i class="fa fa-graduation-cap"></i>
                                                 <h1> المؤهل</h1>
                                                 <input type="text" id="edit-area" placeholder="المؤهل">
-                                                <span>------------</span>
+                                                <span>{{auth()->user()->degree}}</span>
                                             </div>
                                         </div>
                                         <!-- /.home_data-item -->
@@ -233,7 +216,7 @@
                                                 <i class="fa fa-briefcase"></i>
                                                 <h1>التخصص</h1>
                                                 <input type="text" id="edit-area" placeholder="التخصص">
-                                                <span>-------</span>
+                                                <span>{{auth()->user()->specialization}}</span>
                                             </div>
                                         </div>
                                         <!-- /.home_data-item -->
@@ -242,13 +225,7 @@
                                             <div>
                                                 <i class="fa fa-cogs"></i>
                                                 <h1>مجال العمل</h1>
-                                                <select id="edit-area">
-                                                    <option>هندسة هندسة</option>
-                                                    <option>هندسة هندسة</option>
-                                                    <option>هندسة هندسة</option>
-                                                    <option>هندسة هندسة</option>
-                                                </select>
-                                                <span>--------- </span>
+                                                <span>{{auth()->user()->employment}}</span>
                                             </div>
                                         </div>
                                         <!-- /.home_data-item -->
@@ -351,455 +328,7 @@
                             </div>
                             <!-- /.home-content -->
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="courses">
-                            <div class="home-head">
-                                <h1>
-                                    <i class="fa fa-database"></i>
-                                    الدورات
-                                </h1>
-                                <a class="add1_course" href="add-course-form.html">
-                                    <i class="fa fa-plus"></i>إضافة دورة
-                                </a>
-                            </div>
-                            <!-- /.home-head -->
-                            <div class="home-content  pass-content col-xs-12">
-                                <div class="home_data col-md-12 pull-right text-right">
-                                    <div class="shop-wrapper col-xs-12">
 
-
-                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="button" role="tab" id="headingOne" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    <h4 class="panel-title">
-                                                        <a>
-                                                            <h5>
-                                                                <i class="fa fa-group"></i> 20
-                                                            </h5>
-                                                            مقدمة في علوم الحاسب والتكنولوجيا الحديثة
-                                                        </a>
-
-
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                                    <div class="panel-body">
-                                                        <div class="instructor-control text-center">
-
-                                                            <a href="#" class="delete-course">
-                                                                <i class="fa fa-trash"></i> حذف الدورة
-                                                            </a>
-                                                            <a href="#" class="add-course">
-                                                                <i class="fa fa-plus"></i> إضافة محاضرة
-                                                            </a>
-                                                            <a href="#" class="message-course">
-                                                                <i class="fa fa-envelope"></i> إرسال للجميع
-                                                            </a>
-                                                            <!-- =========================================================================================================================================== -->
-
-                                                            <div class="panel-pop modal" id="msg-all">
-                                                                <div class="lost-inner">
-                                                                    <h1>
-                                                                        <i class="fa fa-envelope"></i>
-                                                                        إرسال لجميع الطلاب المشتركين في الدورة
-                                                                    </h1>
-                                                                    <div class="lost-item" id="messageTo">
-                                                                        <textarea placeholder="اكتب الرسالة هنا"></textarea>
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                    <div class="text-center">
-                                                                        <input type="submit" value="إرسال">
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                </div>
-                                                                <!-- /.lost-inner -->
-                                                            </div>
-                                                            <!-- /.modal -->
-
-                                                            <!-- =========================================================================================================================================== -->
-                                                            <a href="#" class="edit-course">
-                                                                <i class="fa fa-pencil"></i> تعديل الدورة
-                                                            </a>
-                                                            <a href="#" class="add-alert-form">
-                                                                <i class="fa fa-bullhorn"></i> إضافة تنويه
-                                                            </a>
-
-                                                            <!-- =========================================================================================================================================== -->
-
-                                                            <div class="panel-pop modal" id="alert-all">
-                                                                <div class="lost-inner">
-                                                                    <h1>
-                                                                        <i class="fa fa-envelope"></i>
-                                                                        اضافة تنويه للطلاب المشتركين في الدورة
-                                                                    </h1>
-                                                                    <div class="lost-item" id="alert-item">
-                                                                        <input type="text" placeholder="عنوان التنويه">
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                    <div class="lost-item" id="alert-item">
-                                                                        <textarea placeholder="مضمون التنويه"></textarea>
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                    <div class="text-center">
-                                                                        <input type="submit" value="نشر التنويه">
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                </div>
-                                                                <!-- /.lost-inner -->
-                                                            </div>
-                                                            <!-- /.modal -->
-
-                                                            <!-- =========================================================================================================================================== -->
-                                                            <div class="add_lecture">
-                                                                <form action="#" method="get">
-                                                                    <div class="lecture-item">
-                                                                        <h1>اسم الدرس</h1>
-                                                                        <input type="text" placeholder="اضف اسم المحاضرة">
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item">
-                                                                        <h1>اضف رابط خارجي للفيديو</h1>
-                                                                        <div class="add_cont text-right">
-                                                                            <label class="text-right">
-                                                                                <input type="checkbox" id="up-video">
-                                                                                <span>اذا أردت رفع فيديو من جهازك الشخصي</span>
-                                                                            </label>
-
-                                                                            <div class="videoUploaded col-xs-12 text-right">
-                                                                                <span><i class="fa fa-video-camera"></i> ارفع فيديو من جهازك</span>
-                                                                                <input type="file" class="uploaded">
-                                                                            </div>
-                                                                            <!--
-                                                                            <label class="text-right">
-                                                                                <input type="radio" id="add-link">
-                                                                                <span>يوتيوب</span>
-                                                                            </label>
--->
-                                                                        </div>
-                                                                        <input type="text" placeholder="ادخل رابط فيديو" class="linked">
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item">
-                                                                        <h1>اسم الدرس</h1>
-                                                                        <textarea placeholder="اضف وصف المحاضرة"></textarea>
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item text-right">
-                                                                        <div class="fileUpload col-xs-12 text-right">
-                                                                            <span><i class="fa fa-file"></i> رابط أوراق العمل </span>
-                                                                            <input type="file" class="upload">
-                                                                        </div>
-                                                                        <span class="hint"> Image او Word او Powerpoint او Pdf الملفات يمكن ان تكون </span>
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item add-sorting">
-                                                                        <label>
-                                                                            <input type="checkbox" id="sort-lesson">
-                                                                            <span>يجب تحديد ترتيب الدرس </span>
-                                                                            <input type="number" data-toggle="tooltip" data-placement="top" title="اكتب ترتيب الدرس بالأرقام" class="add_sort-number">
-                                                                        </label>
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item confirm-lec">
-                                                                        <input type="submit" value="إضافة محاضرة">
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-
-                                                                </form>
-                                                            </div>
-                                                            <!-- /.add_lecture -->
-                                                        </div>
-                                                        <!-- /.instructor-control -->
-                                                        <ul>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>الوصف</label>
-                                                                    <span class="par">
-هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، </span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>المجال</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-
-                                                            <li>
-                                                                <h1>
-                                                                    <label>عدد المشتركين في الدورة</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>الحالة</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>نشرت / لم تنشر</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>الشهادة</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>السعر</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>التاريخ</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>السعر</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>إسم المدرب</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- /.panel-body -->
-
-                                                </div>
-                                                <!-- /#collapseOne -->
-                                            </div>
-                                            <!-- /.panel-default -->
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="button" role="tab" id="headingTwo" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    <h4 class="panel-title">
-                                                        <a class="collapsed" >
-                                                            <h5>
-                                                                <i class="fa fa-group"></i> 7
-                                                            </h5>
-                                                            Build Responsive Real World Websites with HTML5 and CSS3
-                                                        </a>
-
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                    <div class="panel-body">
-                                                        <div class="instructor-control text-center">
-
-                                                            <a href="#" class="delete-course">
-                                                                <i class="fa fa-trash"></i> حذف الدورة
-                                                            </a>
-                                                            <a href="#" class="add-course">
-                                                                <i class="fa fa-plus"></i> إضافة محاضرة
-                                                            </a>
-                                                            <a href="#" class="message-course">
-                                                                <i class="fa fa-envelope"></i> إرسال للجميع
-                                                            </a>
-                                                            <!-- =========================================================================================================================================== -->
-
-                                                            <div class="panel-pop modal" id="msg-all">
-                                                                <div class="lost-inner">
-                                                                    <h1>
-                                                                        <i class="fa fa-envelope"></i>
-                                                                        إرسال لجميع الطلاب المشتركين في الدورة
-                                                                    </h1>
-                                                                    <div class="lost-item" id="messageTo">
-                                                                        <textarea placeholder="اكتب الرسالة هنا"></textarea>
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                    <div class="text-center">
-                                                                        <input type="submit" value="إرسال">
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                </div>
-                                                                <!-- /.lost-inner -->
-                                                            </div>
-                                                            <!-- /.modal -->
-
-                                                            <!-- =========================================================================================================================================== -->
-                                                            <a href="#" class="edit-course">
-                                                                <i class="fa fa-pencil"></i> تعديل الدورة
-                                                            </a>
-                                                            <a href="#" class="add-alert-form">
-                                                                <i class="fa fa-bullhorn"></i> إضافة تنويه
-                                                            </a>
-
-                                                            <!-- =========================================================================================================================================== -->
-
-                                                            <div class="panel-pop modal" id="alert-all">
-                                                                <div class="lost-inner">
-                                                                    <h1>
-                                                                        <i class="fa fa-envelope"></i>
-                                                                        اضافة تنويه للطلاب المشتركين في الدورة
-                                                                    </h1>
-                                                                    <div class="lost-item" id="alert-item">
-                                                                        <input type="text" placeholder="عنوان التنويه">
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                    <div class="lost-item" id="alert-item">
-                                                                        <textarea placeholder="مضمون التنويه"></textarea>
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                    <div class="text-center">
-                                                                        <input type="submit" value="نشر التنويه">
-                                                                    </div>
-                                                                    <!-- /.lost-item -->
-                                                                </div>
-                                                                <!-- /.lost-inner -->
-                                                            </div>
-                                                            <!-- /.modal -->
-
-                                                            <!-- =========================================================================================================================================== -->
-                                                            <div class="add_lecture">
-                                                                <form action="#" method="get">
-                                                                    <div class="lecture-item">
-                                                                        <h1>اسم الدرس</h1>
-                                                                        <input type="text" placeholder="اضف اسم المحاضرة">
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item">
-                                                                        <h1>اضف رابط خارجي للفيديو</h1>
-                                                                        <div class="add_cont text-right">
-                                                                            <label class="text-right">
-                                                                                <input type="checkbox" id="up-video">
-                                                                                <span>اذا أردت رفع فيديو من جهازك الشخصي</span>
-                                                                            </label>
-
-                                                                            <div class="videoUploaded col-xs-12 text-right">
-                                                                                <span><i class="fa fa-video-camera"></i> ارفع فيديو من جهازك</span>
-                                                                                <input type="file" class="uploaded">
-                                                                            </div>
-                                                                            <!--
-                                                                            <label class="text-right">
-                                                                                <input type="radio" id="add-link">
-                                                                                <span>يوتيوب</span>
-                                                                            </label>
--->
-                                                                        </div>
-                                                                        <input type="text" placeholder="ادخل رابط فيديو" class="linked">
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item">
-                                                                        <h1>اسم الدرس</h1>
-                                                                        <textarea placeholder="اضف وصف المحاضرة"></textarea>
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item text-right">
-                                                                        <div class="fileUpload col-xs-12 text-right">
-                                                                            <span><i class="fa fa-file"></i> رابط أوراق العمل </span>
-                                                                            <input type="file" class="upload">
-                                                                        </div>
-                                                                        <span class="hint"> Image او Word او Powerpoint او Pdf الملفات يمكن ان تكون </span>
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item add-sorting">
-                                                                        <label>
-                                                                            <input type="checkbox" id="sort-lesson">
-                                                                            <span>يجب تحديد ترتيب الدرس </span>
-                                                                            <input type="number" data-toggle="tooltip" data-placement="top" title="اكتب ترتيب الدرس بالأرقام" class="add_sort-number">
-                                                                        </label>
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-                                                                    <div class="lecture-item confirm-lec">
-                                                                        <input type="submit" value="إضافة محاضرة">
-                                                                    </div>
-                                                                    <!-- /.lecture-item -->
-
-                                                                </form>
-                                                            </div>
-                                                            <!-- /.add_lecture -->
-                                                        </div>
-                                                        <!-- /.instructor-control -->
-                                                        <ul>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>الوصف</label>
-                                                                    <span class="par"><span class="par">
-هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، </span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>المجال</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-
-                                                            <li>
-                                                                <h1>
-                                                                    <label>عدد المشتركين في الدورة</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>الحالة</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>نشرت / لم تنشر</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>الشهادة</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>السعر</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>التاريخ</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>السعر</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                            <li>
-                                                                <h1>
-                                                                    <label>إسم المدرب</label>
-                                                                    <span>برمجة وعلوم</span>
-                                                                </h1>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <!-- /.panel-body -->
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!-- /.panel-group -->
-
-
-                                    </div>
-                                    <!-- end shop-wrapper -->
-                                </div>
-                                <!-- ./home_data -->
-                            </div>
-                            <!-- /.home-content -->
-                        </div>
                         <div role="tabpanel" class="tab-pane fade" id="cv">
                             <div class="home-head">
                                 <h1>
@@ -850,21 +379,14 @@
                                 <div class="home_data col-xs-12 pull-right text-right">
                                     <div class="interest-show">
                                         <ul>
+                                            @foreach(auth()->user()->interests as $item)
                                             <li>
-                                                    <span class="inter-item">لعب كرة قدم
+                                                    <span class="inter-item">{{$item->name}}
                                                         <i class="fa fa-times" id="del-item"></i>
                                                     </span>
                                             </li>
-                                            <li>
-                                                    <span class="inter-item">لعب كرة قدم
-                                                        <i class="fa fa-times" id="del-item"></i>
-                                                    </span>
-                                            </li>
-                                            <li>
-                                                    <span class="inter-item">لعب كرة قدم
-                                                        <i class="fa fa-times" id="del-item"></i>
-                                                    </span>
-                                            </li>
+                                            @endforeach
+
                                         </ul>
                                     </div>
                                     <!-- /.interest-show -->
@@ -874,7 +396,7 @@
                                         </a>
                                     </div>
                                     <!-- /.add-interest -->
-                                    <form action="{{route('user.interest   ')}}" method="post">
+                                    <form action="{{route('user.interest')}}" method="post">
                                         @csrf
 
                                         @if ($errors->any())

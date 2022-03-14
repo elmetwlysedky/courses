@@ -35,5 +35,8 @@ class UserInterestsController extends Controller
 
         $user = User::find($data['user_id']);
         $user->interests()->sync($data['interest_id']);
+
+        return redirect()->route('userInterest.index');
     }
+
 }

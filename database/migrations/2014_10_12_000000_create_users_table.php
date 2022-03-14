@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('avatar') ->nullable();
             $table->boolean('is_teacher'); // 0 = student , 1 = teacher
             $table->boolean('gender');// 0 = "female" , 1 = "male"
+            $table->string('degree')->nullable();
+            $table->string('employment')->nullable();
+            $table->string('cv')->nullable();
+            $table->string('specialization')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

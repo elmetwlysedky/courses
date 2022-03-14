@@ -31,7 +31,11 @@ class UserRequest extends FormRequest
             'is_teacher' =>'required',
             'gender' =>'required|string',
             'avatar' =>'image|max:2048',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string|confirmed',
+            'degree' => 'nullable|string|max:225',
+            'specialization'=>'nullable|string|max:225',
+            'employment'=>'nullable|string|max:225',
+            'cv'=>'nullable',
         ];
     }
 }

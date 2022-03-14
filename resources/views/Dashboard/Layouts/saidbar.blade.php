@@ -78,7 +78,7 @@
                     </ul>
                 </li>
                 <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>الدول</span></a>
+                    <a href="#" class="nav-link"><i class="icon-flag3"></i> <span>الدول</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Themes">
                         <li class="nav-item"><a href="{{route('country.index')}}" class="nav-link">قائمة الدول</a></li>
                         <li class="nav-item"><a href="{{route('country.create')}}" class="nav-link">اضافة دوله</a></li>
@@ -96,24 +96,38 @@
                     </ul>
                 </li>
 
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-stack"></i> <span>المدربين</span></a>
-                    <ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-                        <li class="nav-item"><a href="{{route('teacher.index')}}" class="nav-link">قائمة المدربين</a></li>
-                        <li class="nav-item"><a href="{{route('teacher.create')}}" class="nav-link">اضافة مدرب</a></li>
-
-                    </ul>
-                </li>
-
 
                 <li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link"><i class="icon-clapboard-play mr-3"></i> <span>الكورسات</span></a>
                     <ul class="nav nav-group-sub" data-submenu-title="Starter kit">
                         <li class="nav-item"><a href="{{route('course.index')}}" class="nav-link">قائمة الكورسات</a></li>
                         <li class="nav-item"><a href="{{route('course.create')}}" class="nav-link">اضافة كورس</a></li>
+                        <li class="nav-item"><a href="{{route('course-active')}}" class="nav-link">الكورسات المفعله </a></li>
+                        <li class="nav-item"><a href="{{route('course-un_active')}}" class="nav-link">الكورسات الغير مفعله</a></li>
 
                     </ul>
                 </li>
+
+
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-film4 mr-3"></i> <span>الدروس</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Starter kit">
+                        <li class="nav-item"><a href="{{route('lesson.index')}}" class="nav-link">قائمة الدروس</a></li>
+                        <li class="nav-item"><a href="{{route('lesson.create')}}" class="nav-link">اضافة درس</a></li>
+
+                    </ul>
+                </li>
+
+
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-play mr-3"></i> <span>الاشتراكات</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Starter kit">
+                        <li class="nav-item"><a href="{{route('course-user.index')}}" class="nav-link">قائمة الاشتراكات</a></li>
+                        <li class="nav-item"><a href="{{route('course-user.create')}}" class="nav-link">اضافة اشتراكات</a></li>
+
+                    </ul>
+                </li>
+
 
                 <!-- /forms -->
 

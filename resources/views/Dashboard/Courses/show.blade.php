@@ -22,7 +22,7 @@
                         </a>
 
                         <div class="dropdown-menu ">
-                            <a href="{{route('course.create')}}" class="dropdown-item"><i class="icon-plus3"></i> اضافة درس </a>
+                            <a href="{{route('lesson.create')}}" class="dropdown-item"><i class="icon-plus3"></i> اضافة درس </a>
                             <a href="{{route('course.edit',$course->id)}}"class="dropdown-item"><i class="icon-pencil7"></i> تعديل </a>
 
                             <form action="{{route('course.destroy',$course->id)}}" method="POST" >
@@ -39,7 +39,13 @@
 
             <div class="card-body">
                 <div class="card-img embed-responsive embed-responsive-16by9 mb-3">
-                    <iframe class="embed-responsive-item" allowfullscreen="" frameborder="0" mozallowfullscreen="" src="https://player.vimeo.com/video/164841921?title=0&amp;byline=0&amp;portrait=0" webkitallowfullscreen=""></iframe>
+
+                    @if($course->video_intro != null)
+                    <video  src="/storage/{{$course->video_intro}}"class="embed-responsive-item" allowfullscreen="" frameborder="0" mozallowfullscreen=""  controls>
+                    </video>
+                    @else
+                    <img src="/storage/{{$course->image}}" class="embed-responsive-item" allowfullscreen="" frameborder="0" mozallowfullscreen="" >
+                    @endif
                 </div>
                 {{$course->description}}
             </div>
@@ -65,103 +71,40 @@
 
     <div class="mb-3 pt-2">
         <h6 class="mb-0 font-weight-semibold">
-            Video grid
+
         </h6>
-        <span class="text-muted d-block">Video grid with 4 - 2 - 1 columns</span>
+        <span class="text-muted d-block">دروس الكورس</span>
     </div>
 
     <div class="row">
+        @foreach($course->lesson as $lesson)
         <div class="col-sm-6 col-xl-3">
             <div class="card">
                 <div class="card-img-actions mx-1 mt-1">
                     <div class="card-img embed-responsive embed-responsive-16by9">
                         <iframe allowfullscreen="" frameborder="0" mozallowfullscreen="" src="https://player.vimeo.com/video/126945693?title=0&amp;byline=0&amp;portrait=0" webkitallowfullscreen=""></iframe>
+                        <video allowfullscreen="" frameborder="0" mozallowfullscreen="" src="/storage/{{$lesson->video}}" webkitallowfullscreen="" controls></video>
+
                     </div>
                 </div>
 
                 <div class="card-body">
                     <div class="d-flex align-items-start flex-nowrap">
                         <div>
-                            <h6 class="font-weight-semibold mr-2">For ostrich much</h6>
-                            <span>Branched is on an ecstatic directly it. Put off continue you denoting returned juvenile ones</span>
+                            <h6 class="font-weight-semibold mr-2">{{$lesson->name}}</h6>
+                            <span>{{$lesson->description}}</span>
                         </div>
 
                         <div class="list-icons list-icons-extended ml-auto">
-                            <a href="#" class="list-icons-item"><i class="icon-download top-0"></i></a>
+{{--                            <a href="#" class="list-icons-item"><i class="icon-download top-0"></i></a>--}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
 
-        <div class="col-sm-6 col-xl-3">
-            <div class="card">
-                <div class="card-img-actions mx-1 mt-1">
-                    <div class="card-img embed-responsive embed-responsive-16by9">
-                        <iframe allowfullscreen="" frameborder="0" mozallowfullscreen="" src="https://player.vimeo.com/video/89546048?title=0&amp;byline=0&amp;portrait=0" webkitallowfullscreen=""></iframe>
-                    </div>
-                </div>
 
-                <div class="card-body">
-                    <div class="d-flex align-items-start flex-nowrap">
-                        <div>
-                            <h6 class="font-weight-semibold mr-2">An so vulgar</h6>
-                            <span>On projection apartments unsatiable so if he entreaties appearance you wife how we lady half</span>
-                        </div>
-
-                        <div class="list-icons list-icons-extended ml-auto">
-                            <a href="#" class="list-icons-item"><i class="icon-download top-0"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3">
-            <div class="card">
-                <div class="card-img-actions mx-1 mt-1">
-                    <div class="card-img embed-responsive embed-responsive-16by9">
-                        <iframe allowfullscreen="" frameborder="0" mozallowfullscreen="" src="https://player.vimeo.com/video/126580704?title=0&amp;byline=0&amp;portrait=0" webkitallowfullscreen=""></iframe>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="d-flex align-items-start flex-nowrap">
-                        <div>
-                            <h6 class="font-weight-semibold mr-2">Not rapturous</h6>
-                            <span>Welcomed stronger if steepest ecstatic an suitable finished of one. Entered excited forming</span>
-                        </div>
-
-                        <div class="list-icons list-icons-extended ml-auto">
-                            <a href="#" class="list-icons-item"><i class="icon-download top-0"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3">
-            <div class="card">
-                <div class="card-img-actions mx-1 mt-1">
-                    <div class="card-img embed-responsive embed-responsive-16by9">
-                        <iframe allowfullscreen="" frameborder="0" mozallowfullscreen="" src="https://player.vimeo.com/video/127790272?title=0&amp;byline=0&amp;portrait=0" webkitallowfullscreen=""></iframe>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="d-flex align-items-start flex-nowrap">
-                        <div>
-                            <h6 class="font-weight-semibold mr-2">He it otherwise</h6>
-                            <span>Chicken unknown besides attacks gay compact out you. Continuing no simplicity no favourable</span>
-                        </div>
-
-                        <div class="list-icons list-icons-extended ml-auto">
-                            <a href="#" class="list-icons-item"><i class="icon-download top-0"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 

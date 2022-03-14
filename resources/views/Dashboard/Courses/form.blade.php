@@ -21,14 +21,9 @@
     <div class="form-group row">
         <label class="col-form-label col-lg-3">اهتمامات الكورس <span class="text-danger">*</span></label>
         <div class="col-lg-9">
-            @foreach($interests as $interest)
-                <label class="form-check-label">
+            {!! Form::select('interest_id[]',$interests, null,
+            ['class'=>'js-example-basic-multiple form-control', 'multiple'=>'multiple']) !!}
 
-                   {!!   Form::checkbox('interest_id[]', $interest->id )!!}
-
-                    {{$interest->name}}
-                </label>
-            @endforeach
         </div>
     </div>
 

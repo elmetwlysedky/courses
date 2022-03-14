@@ -1,29 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use App\Models\Interest;
-use App\Models\Teacher;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+
     public function index(){
-        return view('Dashboard.Courses.index',[
-            'courses' => Course::all()
+        return view('Site.Course.index',[
+            'courses' => Course::where('active','1')->paginate(6)
+        ]);
+    }
+
+    public function intro($id){
+        return view('Site.Course.intro',[
+            'course'=> Course::findOrFail($id)
         ]);
     }
 
     public function create(){
-
-        return view('Dashboard.Courses.create',[
-            'interests' => Interest::pluck('name','id'),
-            'teachers' => User::where('is_teacher',1)->pluck('name','id'),
-
+        return view('Site.Course.create',[
+        'interests' => Interest::pluck('name','id')
         ]);
     }
 
@@ -37,26 +39,16 @@ class CourseController extends Controller
             $data['video_intro'] = $path_video;
         }
         $course = Course::create($data);
-
         $course->interests()->attach($data['interest_id']);
+        return redirect()->route('site.course.all');
 
-
-        return redirect()->route('course.index');
-
-
-    }
-
-    public function show($id){
-        return view('Dashboard.Courses.show',[
-            'course' => Course::findOrFail($id)
-        ]);
     }
 
     public function edit($id){
-        return view('Dashboard.Courses.edit',[
+        return view('Site.Course.edit',[
             'course' => Course::findOrFail($id),
             'interests' => Interest::pluck('name','id'),
-            'teachers' => User::where('is_teacher',1)->pluck('name','id'),
+
         ]);
     }
 
@@ -72,16 +64,15 @@ class CourseController extends Controller
             $path_video = $request->file('video_intro')->store('VideoCourse');
             $data['video_intro'] = $path_video;
         }
-       $course->update($data);
-       $course->interests()->sync($data['interest_id']);
+        $course->update($data);
+        $course->interests()->sync($data['interest_id']);
 
-        return redirect()->route('course.index');
+        return redirect()->route('site.course.all');
     }
 
     public function destroy($id){
         $course = Course::destroy($id);
         return redirect()->back();
     }
-
 
 }

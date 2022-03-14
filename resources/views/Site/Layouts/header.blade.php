@@ -27,7 +27,8 @@
     <link href="/App/css/style.css" rel="stylesheet" type="text/css">
     <link href="/App/css/reset.css" rel="stylesheet" type="text/css">
     <link href="/App/images/favicon.png" rel="icon" type="text/css">
-</head>
+
+   </head>
 
 <body>
 
@@ -187,12 +188,8 @@
                                                                 </li>
                                                                 <li>
 
-                                                                    <a href="#">
-                                                                        <form class="navbar-nav-link" action="{{route('logout')}}" method="POST">
-                                                                            @csrf
-                                                                            <button class="fa fa-power-off" type="submit"></button>
-
-                                                                        </form>
+                                                                    <a href="{{route('logout')}}">
+                                                                        <i class="fa fa-power-off"></i>
                                                                     </a>
                                                                 </li>
                                                             </ul>

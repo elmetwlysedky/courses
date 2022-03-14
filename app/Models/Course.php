@@ -21,16 +21,40 @@ class Course extends Model
         'teacher_id',
 
     ];
+
+
+
+    protected $appends =['free_string','active_string'];
+
+    public function getFreeStringAttribute(){
+        $arr=['0' => 'مجاني',
+            '1' => 'غير مجاني',
+        ];
+        return $arr[$this->free];
+    }
+
+    public function getActiveStringAttribute(){
+        $arr=['0' => 'مفعل',
+            '1' => 'غير مفعل',
+        ];
+        return $arr[$this->active];
+    }
+
+
     public function teacher(){
-        return $this->belongsTo(Teacher::class , 'teacher_id');
+        return $this->belongsTo(User::class , 'teacher_id');
     }
 
     public function lesson(){
         return $this->hasMany(Lesson::class , 'course_id');
     }
 
-    public function user(){
-        return $this->belongsToMany(User::class,'course_user');
+    public function users(){
+        return $this->belongsToMany(User::class,'course_users');
+    }
+
+    public function user_course(){
+        return $this->hasMany(CourseUsers::class,'course_id');
     }
 
     public function interests(){

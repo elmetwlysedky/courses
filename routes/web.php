@@ -24,12 +24,21 @@ Route::get('/email/verify', function () {
 
 
     Route::group(
-        [ 'namespace' => 'App\Http\Controllers\Site' ,'middleware' => ['auth','verified' ]],function() {
+        [ 'namespace' => 'App\Http\Controllers\Site' ,'middleware' => ['auth' ]],function() {
 
-        Route::get('/', 'HomeController@index');
+        Route::get('/', 'HomeController@index')->name('main');
+
         Route::get('profile', 'ProfileController@index')->name('profile');
-        Route::post('profile', 'ProfileController@store_interest')->name('user.interest');
+        Route::post('profile/interest', 'ProfileController@store_interest')->name('user.interest');
+        ///////////////////////////////
         Route::post('/changePassword','ChangePasswordController@changePasswordPost')->name('changePasswordPost');
+        ////////////////////////////////
+        Route::get('course/intro/{id}','CourseController@intro')->name('course.intro');
+        Route::get('course/create','CourseController@create')->name('site.course.create')->middleware('teacher');
+        Route::post('course/store','CourseController@store')->name('site.course.store')->middleware('teacher');
+        Route::get('course/edit/{id}','CourseController@edit')->name('site.course.edit')->middleware('teacher');
+        Route::get('course/update/{id}','CourseController@update')->name('site.course.update')->middleware('teacher');
+        Route::get('course/all','CourseController@index')->name('site.course.all');
 
 
     });

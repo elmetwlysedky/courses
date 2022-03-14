@@ -1,11 +1,7 @@
 @extends('Dashboard.Layouts.master')
 
 @section('title')
-    اضافة كورس
-@endsection
-
-@section('js')
-
+    اضافة درس
 @endsection
 
 @section('content')
@@ -13,7 +9,7 @@
 
    <div class="card">
     <div class="card-header header-elements-inline">
-        <h5 class="card-title">اضافة كورس</h5>
+        <h5 class="card-title">اضافة درس</h5>
         <div class="header-elements">
             <div class="list-icons">
                 <a class="list-icons-item" data-action="collapse"></a>
@@ -26,7 +22,7 @@
     <div class="card-body">
         <p class="mb-4"> <strong></strong> </p>
 
-        {!!Form::open(['route' => 'course.store', 'class'=>'form-validate-jquery','method'=>'post', 'enctype'=>'multipart/form-data'])!!}
+        {!!Form::open(['route' => 'lesson.store', 'class'=>'form-validate-jquery','method'=>'post', 'enctype'=>'multipart/form-data'])!!}
 
 
         @if ($errors->any())
@@ -39,7 +35,7 @@
             </div>
         @endif
 
-        @include('Dashboard.Courses.form')
+        @include('Dashboard.Lesson.form')
         <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-plus3"></i></b> اضافة </button>
         {!! Form::close() !!}
     </div>

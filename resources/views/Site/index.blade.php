@@ -73,43 +73,28 @@
     <!-- /.testominal-head -->
     <div class="row block-container">
 
+        @foreach($course as $item)
         <div class="block col-md-4 col-sm-6">
             <figure>
-                <div><img src="/App/images/b3.jpg" alt="img05" class="img-responsive"></div>
-                <figcaption class="text-right">
-                    <h1>اسم الكورس</h1>
-                    <h1>اسم المدرس</h1>
-                    <h1>عدد الطلبة المشتركة</h1>
-                    <h1>تاريخ بداية الكورس</h1>
-                    <h1>تقييم الكورس</h1>
-                    <a href="#">
-                        <i class="fa fa-eye"></i> مشاهدة الكورس
-                    </a>
-                </figcaption>
-            </figure>
-        </div>
-        <!-- /.block -->
-        <div class="block col-md-4 col-sm-6">
-            <figure>
-                <div><img src="/App/images/event_1.jpg" alt="img05" class="img-responsive"></div>
+                <div><img src="/storage/{{$item->image}}" alt="img05" class="img-responsive"></div>
                 <figcaption class="text-right">
                     <h1>
                         <label>اسم الكورس</label>
-                        <span>علوم حاسب</span>
+                        <span>{{$item->title}}</span>
                     </h1>
                     <h1>
                         <label>اسم المدرس</label>
-                        <span>علوم حاسب</span>
+                        <span>{{$item->teacher->name}}</span>
 
                     </h1>
                     <h1>
                         <label>عدد الطلبة المشتركة</label>
-                        <span>300</span>
+                        <span>{{$item->users->count()}}</span>
 
                     </h1>
                     <h1>
                         <label>تاريخ بداية الكورس</label>
-                        <span>مارس 10</span>
+                        <span>{{$item->created_at->format('d/m/Y')}}0</span>
 
                     </h1>
                     <h1>
@@ -117,78 +102,14 @@
                         <span>جيد</span>
 
                     </h1>
-                    <a href="#">
+                    <a href="{{route('course.intro',$item->id)}}">
                         <i class="fa fa-eye"></i> مشاهدة الكورس
                     </a>
                 </figcaption>
             </figure>
         </div>
+    @endforeach
         <!-- /.block -->
-        <div class="block col-md-4 col-sm-6">
-            <figure>
-                <div><img src="/App/images/b3.jpg" alt="img05" class="img-responsive"></div>
-                <figcaption class="text-right">
-                    <h1>اسم الكورس</h1>
-                    <h1>اسم المدرس</h1>
-                    <h1>عدد الطلبة المشتركة</h1>
-                    <h1>تاريخ بداية الكورس</h1>
-                    <h1>تقييم الكورس</h1>
-                    <a href="#">
-                        <i class="fa fa-eye"></i> مشاهدة الكورس
-                    </a>
-                </figcaption>
-            </figure>
-        </div>
-        <!-- /.block -->
-        <div class="block col-md-4 col-sm-6">
-            <figure>
-                <div><img src="/App/images/b3.jpg" alt="img05" class="img-responsive"></div>
-                <figcaption class="text-right">
-                    <h1>اسم الكورس</h1>
-                    <h1>اسم المدرس</h1>
-                    <h1>عدد الطلبة المشتركة</h1>
-                    <h1>تاريخ بداية الكورس</h1>
-                    <h1>تقييم الكورس</h1>
-                    <a href="#">
-                        <i class="fa fa-eye"></i> مشاهدة الكورس
-                    </a>
-                </figcaption>
-            </figure>
-        </div>
-        <!-- /.block -->
-        <div class="block col-md-4 col-sm-6">
-            <figure>
-                <div><img src="/App/images/b3.jpg" alt="img05" class="img-responsive"></div>
-                <figcaption class="text-right">
-                    <h1>اسم الكورس</h1>
-                    <h1>اسم المدرس</h1>
-                    <h1>عدد الطلبة المشتركة</h1>
-                    <h1>تاريخ بداية الكورس</h1>
-                    <h1>تقييم الكورس</h1>
-                    <a href="#">
-                        <i class="fa fa-eye"></i> مشاهدة الكورس
-                    </a>
-                </figcaption>
-            </figure>
-        </div>
-        <!-- /.block -->
-        <div class="block col-md-4 col-sm-6">
-            <figure>
-                <div><img src="/App/images/b3.jpg" alt="img05" class="img-responsive"></div>
-                <figcaption class="text-right">
-                    <h1>اسم الكورس</h1>
-                    <h1>اسم المدرس</h1>
-                    <h1>عدد الطلبة المشتركة</h1>
-                    <h1>تاريخ بداية الكورس</h1>
-                    <h1>تقييم الكورس</h1>
-                    <a href="#">
-                        <i class="fa fa-eye"></i> مشاهدة الكورس
-                    </a>
-                </figcaption>
-            </figure>
-        </div>
-        <!-- /.block -->
-
 
     </div>
     <!-- /.row -->

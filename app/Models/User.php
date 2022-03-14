@@ -26,6 +26,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'country_id',
         'is_teacher',
         'gender',
+        'degree',
+        'specialization',
+        'employment',
+        'cv',
     ];
 protected $appends =['teacher_string','gender_string'];
 
@@ -78,7 +82,8 @@ protected $appends =['teacher_string','gender_string'];
         return $this->belongsTo(Country::class,'country_id');
     }
 
-    public function teacher(){
-        return $this->hasOne(Teacher::class , 'user_id');
+    public function courses(){
+        return $this->belongsToMany(Course::class,'course_users');
     }
+
 }

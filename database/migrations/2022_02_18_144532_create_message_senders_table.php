@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('message_senders', function (Blueprint $table) {
             $table->id();
             $table->longText('body');
-            $table->foreignId('teacher_id')->constrained('teachers')->cascadeOnDelete();
+            $table->foreignId('teacher_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -19,12 +19,12 @@ return new class extends Migration
             $table->text('requirements')->nullable();
             $table->string('video_intro')->nullable();
             $table->boolean('free');//0 = free  , 1 = not free
-            $table->boolean('active');//0 = yes  , 1 = no
+            $table->boolean('active')->default(0);//
             $table->longText('description');
             $table->enum('gender',['male','female','all']);
-            $table->decimal('price',10,4);
+            $table->decimal('price',10,2);
             $table->string('image');
-            $table->foreignId('teacher_id')->constrained('teachers')->cascadeOnDelete();
+            $table->foreignId('teacher_id')->constrained('users')->cascadeOnDelete();
 
             $table->timestamps();
         });

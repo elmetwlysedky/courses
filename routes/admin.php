@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
     Route::get('dashboard/login','App\Http\Controllers\Admin\LoginController@create')->name('dashboard.login');
     Route::post('dashboard/login','App\Http\Controllers\Admin\LoginController@store')->name('admin.login');
-    Route::post('dashboard/logout','App\Http\Controllers\Admin\LoginController@destroy')->name('dashboard.logout');
+    Route::get('dashboard/logout','App\Http\Controllers\Admin\LoginController@destroy')->name('dashboard.logout');
 
 
     Route::group(
@@ -15,15 +15,21 @@ use Illuminate\Support\Facades\Auth;
                 'prefix' =>'admin', 'namespace' => 'App\Http\Controllers\Admin' , 'middleware' => 'auth:admin'
             ], function() {
 
-                Route::get('/' , 'HomeController@index')->name('admin.home');
+            Route::get('main' , 'HomeController@index')->name('admin.home');
 
-                Route::resource('interest', 'InterestController');
-                Route::resource('country', 'CountryController');
-                Route::resource('user', 'UserController');
-                Route::resource('userInterest', 'UserInterestsController');
-                Route::resource('teacher', 'TeacherController');
-                Route::resource('course', 'CourseController');
-                Route::resource('lesson', 'LessonController');
+            Route::resource('interest', 'InterestController');
+            Route::resource('country', 'CountryController');
+            Route::resource('user', 'UserController');
+            Route::resource('userInterest', 'UserInterestsController');
+            Route::resource('teacher', 'TeacherController');
+            Route::resource('course', 'CourseController');
+            Route::get('course-active','ActiveCourseController@active')->name('course-active');
+            Route::get('course-un-active','ActiveCourseController@unactive')->name('course-un_active');
+            Route::put('course-status/{id}','ActiveCourseController@status')->name('course-status');
+            Route::resource('lesson', 'LessonController');
+            Route::resource('course-user','CourseUserController');
+            Route::put('course-user-status/{id}','CourseUserController@status')->name('course-user-status');
+
 
 
 
