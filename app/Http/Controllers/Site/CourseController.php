@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Events\AddCourse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use App\Models\Interest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
 
     public function index(){
         return view('Site.Course.index',[
-            'courses' => Course::where('active','1')->paginate(6)
+            'courses' => Course::where('active','1')->paginate(6),
+            'interests' => Interest::all(),
         ]);
     }
 
@@ -40,8 +43,22 @@ class CourseController extends Controller
         }
         $course = Course::create($data);
         $course->interests()->attach($data['interest_id']);
+
+        $data=[
+                'teacher_id' => Auth()->user()->name,
+                'title' => $request->title,
+        ];
+        event(new AddCourse($data));
+
         return redirect()->route('site.course.all');
 
+    }
+
+    public function show($id){
+
+        return view('Site.Course.show',[
+            'course' => Course::findOrFail($id)
+        ]);
     }
 
     public function edit($id){
@@ -74,5 +91,7 @@ class CourseController extends Controller
         $course = Course::destroy($id);
         return redirect()->back();
     }
+
+
 
 }

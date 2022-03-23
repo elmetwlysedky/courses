@@ -1,6 +1,9 @@
-@extends('Site.Layouts.master')
+@include('Site.Layouts.header')
 
-@section('content')
+@include('Site.Layouts.sidebar')
+
+
+@include('Site.Layouts.navbar')
 
 
 
@@ -8,10 +11,11 @@
     <div class="container">
         <div class="search-inner">
             <h1 class="text-center">تستطيع من خلال موقعنا البحث  عن كل ما تريد من كورسات </h1>
-            <form action="#" method="get">
+            <form action="{{route('search')}}" method="get">
+                @csrf
                 <div class="form-item col-xs-12">
                     <div class="input-container col-md-10 col-xs-12 input-lft pull-right">
-                        <input type="text" placeholder="ابحث عن جميع الكورسات من هنا">
+                        <input type="text" name="search" placeholder="ابحث عن جميع الكورسات من هنا">
                     </div>
                     <!-- /.input-container -->
                     <div class="btn-container col-md-1 btn-right">
@@ -98,8 +102,8 @@
 
                     </h1>
                     <h1>
-                        <label>تقييم الكورس</label>
-                        <span>جيد</span>
+                        <label>دروس الكورس</label>
+                        <span>{{$item->lesson->count()}}</span>
 
                     </h1>
                     <a href="{{route('course.intro',$item->id)}}">
@@ -115,10 +119,10 @@
     <!-- /.row -->
 
     <div class="all-courses text-center">
-        <a href="all-courses.html">عرض جميع الكورسات</a>
+        <a href="{{route('site.course.all')}}">عرض جميع الكورسات</a>
     </div>
     <!-- /.all-courses -->
 
 </div>
 <!-- /.conainer -->
-@endsection
+@include('Site.Layouts.footer')

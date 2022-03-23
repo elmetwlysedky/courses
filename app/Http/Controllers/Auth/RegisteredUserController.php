@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' =>['required','string','max:15'],
+            'phone' =>['required','string','max:20'],
             'country_id' =>['required','string','max:225'],
             'is_teacher' =>['required'],
             'gender' =>['required','string'],
@@ -52,6 +52,7 @@ class RegisteredUserController extends Controller
         if($request->avatar != null) {
 
             $path = $request->file('avatar')->store('avatars',);
+            $request['avatar'] = $path;
         }
         $user = User::create([
             'name' => $request->name,
@@ -60,7 +61,7 @@ class RegisteredUserController extends Controller
             'country_id' => $request->country_id,
             'is_teacher' => $request->is_teacher,
             'gender' => $request->gender,
-            'avatar' => $path,
+            'avatar' => $request->path,
            'password' => Hash::make($request->password),
         ]);
 

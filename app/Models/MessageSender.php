@@ -13,10 +13,10 @@ class MessageSender extends Model
         'teacher_id',
     ];
 
-    public function user(){
-        return $this->belongsTo(Teacher::class ,'teacher_id');
+    public function teacher(){
+        return $this->belongsTo(User::class ,'teacher_id');
     }
     public function student(){
-        return $this->belongsToMany(Student::class,'message_recipients');
+        return $this->belongsToMany(User::class,'message_recipients');
     }
 }

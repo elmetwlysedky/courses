@@ -60,7 +60,13 @@
 
                 @if ($course->teacher_id ==Auth::id())
                     <a href="{{route('site.course.edit',$course->id)}}" >
-                        <i class="fa fa-cog"></i> تعديل الدورة
+                        <i class="fa fa-cog"></i> تعديل
+                    </a>
+                    <a href="{{route('site.course.destroy',$course->id)}}" >
+                        <i class="fa fa-cog"></i> حذف
+                    </a>
+                    <a href="{{route('site.lesson.create',$course->id)}}" >
+                        <i class="fa fa-cog"></i> اضافة درس
                     </a>
                 @else
                 <a href="#" class="show-credit">
@@ -105,7 +111,7 @@
 
                             @foreach($course->lesson as $item)
                             <li>
-                                <i class="fa fa-play-circle"></i>{{$item->name}}
+                                <a href="{{route('site.lesson.show',$item->id)}}"> <i class="fa fa-play-circle"></i></a>{{$item->name}}
                             </li>
 
                             @endforeach
@@ -152,6 +158,42 @@
         </div>
         <!-- /.intro-instructor -->
     </div>
+
+
+    <div class="panel-pop modal" id="payment">
+        <div>
+            <h1>
+                <i class="fa fa-shopping-cart"></i>
+                تأكيد الاشتراك في الكورس
+            </h1>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#credit-card" aria-controls="credit-card" role="tab" data-toggle="tab">
+                        <i class="fa fa-credit-card"></i>Credit Card
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#paypal" aria-controls="paypal" role="tab" data-toggle="tab">
+                        <i class="fa fa-paypal"></i> Paypal
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active" id="credit-card">...</div>
+                <div role="tabpanel" class="tab-pane fade" id="paypal">
+                    <div class="paypal-box text-center">
+                        <a href="#">تأكيد الدفع من خلال البايبال</a>
+                    </div>
+                    <!-- end paypal-box -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 
 
     <script type="text/javascript">

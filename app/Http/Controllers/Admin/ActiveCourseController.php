@@ -11,14 +11,14 @@ class ActiveCourseController extends Controller
     public function active(){
 
         return view('Dashboard.Courses.active',[
-            'course'=> Course::where('active',1)->get()
+            'course'=> Course::where('active',1)->Paginate(12)
         ]);
     }
 
     public function unactive(){
 
         return view('Dashboard.Courses.un_active',[
-            'course'=> Course::where('active',0)->get()
+            'course'=> Course::where('active',0)->Paginate(12)
         ]);
     }
 

@@ -129,6 +129,10 @@
                 </li>
 
 
+                <li class="nav-item nav-item-submenu">
+                    <a href="{{route('contact.index')}}" class="nav-link">  <i class="icon-bubbles5 mr-3 icon"></i><span>رسائل التواصل</span></a>
+                </li>
+
                 <!-- /forms -->
 
 

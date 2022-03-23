@@ -10,49 +10,7 @@
         <div class="allcourses-head text-center">
             <div class="container">
                 <h1>جميع الكورسات</h1>
-                <div class="nav-left nav-mobile col-md-4 col-xs-12 pull-left">
-                    <div class="user-logged">
-                        <ul>
-                            <li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" class="hvr-underline-reveal"><i class="fa fa-user"></i>
-                                    <b>امير ناجح</b>
 
-                                    <i class="fa fa-caret-down"></i>
-                                </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                    <div class="drop drop-links col-xs-12">
-                                        <div class="drop-links">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-user"></i>&nbsp; عرض الحساب
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-cog"></i>&nbsp; تعديل الحساب
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-power-off"></i>&nbsp; خروج
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- end drop-links -->
-                                    </div>
-                                    <!-- end drop -->
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <!-- /.user-controls -->
-
-
-                </div>
-                <!-- /.nav-user -->
             </div>
             <!-- /.container -->
         </div>
@@ -64,26 +22,20 @@
                         <a href="#" class="show-cat">علوم الحاسب<i class="fa fa-caret-down"></i></a>
                         <div class="hidden-cat">
                             <ul>
+                                @foreach($interests as $interest)
                                 <li>
-                                    <a href="#">برمجة ويب</a>
+                                    <a href="{{route('course-with-category',$interest->id)}}">{{$interest->name}}</a>
                                 </li>
-                                <li>
-                                    <a href="#">برمجة ويب</a>
-                                </li>
-                                <li>
-                                    <a href="#">برمجة ويب</a>
-                                </li>
-                                <li>
-                                    <a href="#">برمجة ويب</a>
-                                </li>
+                                @endforeach
 
                             </ul>
                         </div>
                     </div>
                     <!-- /. cat-inner -->
                     <div class="cat-inner col-md-6 col-sm-6 col-xs-6 pull-left">
-                        <form>
-                            <input type="search" placeholder="ابحث عن كورسات أخري">
+                        <form action="{{route('search')}}" method="get">
+                            @csrf
+                            <input name="search" type="search" placeholder="ابحث عن كورسات أخري">
                             <button type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -125,8 +77,8 @@
 
                                     </h1>
                                     <h1>
-                                        <label>تقييم الكورس</label>
-                                        <span>جيد</span>
+                                        <label>عدد دروس الكورس</label>
+                                        <span>{{$item->lesson->count()}}</span>
 
                                     </h1>
                                     <a href="{{route('course.intro',$item->id)}}">

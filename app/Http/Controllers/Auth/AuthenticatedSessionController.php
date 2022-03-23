@@ -15,7 +15,7 @@ class AuthenticatedSessionController extends Controller
 
     public function __construct()
     {
-        $course =  Course::where('active',0)->get();
+        $course =  Course::where('active',1)->get();
         view::share('course' , $course);
     }
 

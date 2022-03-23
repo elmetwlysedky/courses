@@ -1,8 +1,8 @@
 
 @include('Site.Layouts.header')
 
-@include('Site.Layouts.sidebar')
 
+@include('Site.Layouts.navbar')
 
 
 @yield('content')

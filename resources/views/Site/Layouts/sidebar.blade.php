@@ -19,7 +19,7 @@
                 <li><a class="icon icon-data" href="{{route('site.course.all')}}"><i class="fa fa-database"></i>جميع الدورات</a></li>
 {{--                <li><a class="icon icon-location" href="category-result.html"><i class="fa fa-rocket"></i>قسم معين</a></li>--}}
 {{--                <li><a class="icon icon-study" href="certif.html"><i class="fa fa-file"></i>شهادة التقدير</a></li>--}}
-{{--                <li><a class="icon icon-photo" href="contact-us.html"><i class="fa fa-phone"></i>اتصل بنا</a></li>--}}
+                <li><a class="icon icon-photo" href="{{route('contact.create')}}"><i class="fa fa-phone"></i>اتصل بنا</a></li>
 {{--                <li><a class="icon icon-wallet" href="course-alerts.html"><i class="fa fa-alerts"></i>التنبيهات</a></li>--}}
 {{--                <li><a class="icon icon-data" href="course-comments.html"><i class="fa fa-comments"></i>التعليقات</a></li>--}}
 {{--                <li><a class="icon icon-location" href="course-individual.html"><i class="fa fa-rocket"></i>درس معين</a></li>--}}
@@ -32,3 +32,17 @@
 {{--                <li><a class="icon icon-photo" href="trainer-privacy.html"><i class="fa fa-lock"></i>سياسة الخصوصية</a></li>--}}
             </ul>
         </nav>
+
+
+        <div class="st-content">
+
+            <!-- /.dividers -->
+
+            <div id="st-trigger-effects" class="column">
+                @if( auth()->user())
+                <button data-effect="st-effect-8" class="st_show">
+                    <i class="fa fa-bars"></i>
+                </button>
+                @endif
+            </div>
+

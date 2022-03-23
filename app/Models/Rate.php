@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Rate extends Model
 {
     use HasFactory;
-    protected $fillable = ['rate','course_user_id'];
+    protected $fillable = ['rate','course_id','user_id'];
+
+    public function user(){
+        return $this->belongsTo(User::class , 'user_id');
+    }
+
+    public function course(){
+        return $this->belongsTo(Course::class , 'course_id');
+    }
 }

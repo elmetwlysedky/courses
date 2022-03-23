@@ -64,4 +64,17 @@ class Course extends Model
     public function comment(){
         return $this->hasMany(CommentCourse::class,'course_id');
     }
+
+    public function rate(){
+        return $this->hasMany(Rate::class , 'user_id');
+    }
+
+    public function test(){
+        return $this->hasMany(TestCourse::class,'course_id');
+    }
+
+    public function notice(){
+        return $this->hasMany(NoticeCourse::class,'course_id');
+    }
+
 }

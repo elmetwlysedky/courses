@@ -2,7 +2,7 @@
 <div class="navbar navbar-expand-md navbar-dark">
     <div class="navbar-brand">
         <a href="index.html" class="d-inline-block">
-            <img src="../../../../global_assets/images/logo_light.png" alt="">
+            <img src="/Dashboard/global_assets/images/logo_light.png" alt="">
         </a>
     </div>
 
@@ -29,11 +29,11 @@
         <ul class="navbar-nav">
 
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown dropdown-notifications">
                 <a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
                     <i class="icon-bubbles4"></i>
                     <span class="d-md-none ml-2">Messages</span>
-                    <span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">2</span>
+                    <span class="badge badge-pill bg-warning-400 ml-auto ml-md-0" data-count="1" >2</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-350">
@@ -42,17 +42,17 @@
                         <a href="#" class="text-default"><i class="icon-compose"></i></a>
                     </div>
 
-                    <div class="dropdown-content-body dropdown-scrollable">
+                    <div class="dropdown-content-body dropdown-scrollable ">
                         <ul class="media-list">
-                            <li class="media">
+                            <li class="media scrollable-container">
                                 <div class="mr-3 position-relative">
-                                    <img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+                                    <img src="/Dashboard/global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
 
                                 <div class="media-body">
                                     <div class="media-title">
                                         <a href="#">
-                                            <span class="font-weight-semibold">James Alexander</span>
+                                            <span class="font-weight-semibold media-heading text-right">James Alexander</span>
                                             <span class="text-muted float-right font-size-sm">04:58</span>
                                         </a>
                                     </div>
@@ -61,70 +61,7 @@
                                 </div>
                             </li>
 
-                            <li class="media">
-                                <div class="mr-3 position-relative">
-                                    <img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
-                                </div>
 
-                                <div class="media-body">
-                                    <div class="media-title">
-                                        <a href="#">
-                                            <span class="font-weight-semibold">Margo Baker</span>
-                                            <span class="text-muted float-right font-size-sm">12:16</span>
-                                        </a>
-                                    </div>
-
-                                    <span class="text-muted">That was something he was unable to do because...</span>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="mr-3">
-                                    <img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="media-title">
-                                        <a href="#">
-                                            <span class="font-weight-semibold">Jeremy Victorino</span>
-                                            <span class="text-muted float-right font-size-sm">22:48</span>
-                                        </a>
-                                    </div>
-
-                                    <span class="text-muted">But that would be extremely strained and suspicious...</span>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="mr-3">
-                                    <img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="media-title">
-                                        <a href="#">
-                                            <span class="font-weight-semibold">Beatrix Diaz</span>
-                                            <span class="text-muted float-right font-size-sm">Tue</span>
-                                        </a>
-                                    </div>
-
-                                    <span class="text-muted">What a strenuous career it is that I've chosen...</span>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="mr-3">
-                                    <img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="media-title">
-                                        <a href="#">
-                                            <span class="font-weight-semibold">Richard Vango</span>
-                                            <span class="text-muted float-right font-size-sm">Mon</span>
-                                        </a>
-                                    </div>
-
-                                    <span class="text-muted">Other travelling salesmen live a life of luxury...</span>
-                                </div>
-                            </li>
                         </ul>
                     </div>
 
@@ -136,7 +73,7 @@
 
             <li class="nav-item dropdown dropdown-user">
                 <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-                    <img src="../../../../global_assets/images/placeholders/placeholder.jpg" class="rounded-circle mr-2" height="34" alt="">
+
                     <span>{{auth()->user()->name}}</span>
                 </a>
 

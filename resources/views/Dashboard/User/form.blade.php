@@ -9,7 +9,6 @@
         <label class="col-form-label col-lg-3">الاسم بالكامل <span class="text-danger">*</span></label>
         <div class="col-lg-9">
             {!!Form::text('name',null,['class'=>'form-control'])!!}
-            {{-- <input type="text" name="name" class="form-control" required > --}}
         </div>
     </div>
     <!-- /basic text input -->

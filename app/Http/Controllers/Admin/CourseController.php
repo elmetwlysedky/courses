@@ -14,7 +14,7 @@ class CourseController extends Controller
 {
     public function index(){
         return view('Dashboard.Courses.index',[
-            'courses' => Course::all()
+            'courses' => Course::Paginate(20)
         ]);
     }
 

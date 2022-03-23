@@ -23,6 +23,26 @@
     <script src="{{asset('Dashboard/global_assets/js/plugins/ui/ripple.min.js')}}"></script>
 
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('c051ed6d6186e1401622', {
+            cluster: 'eu'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+            alert(JSON.stringify(data));
+        });
+    </script>
+
+    <script src="{{asset('js/notify.js')}}"></script>
+
+
 
     <!-- /core JS files -->
 
@@ -37,8 +57,8 @@
     <script src="{{asset('Dashboard/assets/js/app.js')}}"></script>
     <script src="{{asset('Dashboard/global_assets/js/demo_pages/dashboard.js')}}"></script>
     <script src="{{asset('Dashboard/global_assets/js/demo_pages/form_select2.js')}}"></script>
-    <script src="{{asset('global_assets/js/plugins/extensions/jquery_ui/interactions.min.js')}}"></script>
-    <script src="{{asset('global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
+    <script src="{{asset('Dashboard/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js')}}"></script>
+    <script src="{{asset('Dashboard/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>

@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileRequest;
+use App\Models\Country;
+use App\Models\Course;
 use App\Models\User;
 use App\Models\UserInterest;
 use Illuminate\Http\Request;
 use App\Models\Interest;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -14,19 +18,38 @@ class ProfileController extends Controller
     {
 
         if(auth()->user()->is_teacher == 1){
+
         return view('Site.Profile.teacher', [
             'interest' => Interest::all(),
-            'user_interest' => UserInterest::where('user_id', auth()->user()->id)
+            'country' => Country::pluck('name' , 'id'),
+            'user' => auth()->user(),
+
         ]);
 
         }else{
             return view('Site.Profile.student', [
             'interest' => Interest::all(),
-            'user_interest' => UserInterest::where('user_id', auth()->user()->id)
+            'country' => Country::pluck('name' , 'id'),
+            'user' => auth()->user(),
         ]);
         }
     }
 
+
+    public function update(ProfileRequest $request, $id)
+    {
+        $user = User::findorFail($id);
+        $data = $request->validated();
+
+
+        if($request->avatar != null) {
+            $path = $request->file('avatar')->store('avatars',);
+            $data['avatar']=$path;
+        }
+
+        $user->update ($data);
+        return redirect()->back();
+    }
 
 
     public function store_interest(Request $request)

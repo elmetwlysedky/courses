@@ -86,4 +86,11 @@ protected $appends =['teacher_string','gender_string'];
         return $this->belongsToMany(Course::class,'course_users');
     }
 
+    public function teacher(){
+        return $this->hasMany(Course::class , 'teacher_id');
+    }
+
+    public function rate(){
+        return $this->hasMany(Rate::class , 'user_id');
+    }
 }
