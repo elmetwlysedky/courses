@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+        $setting = Setting::all();
+    view::share('setting',$setting);
+
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
-
 
 
 
@@ -87,6 +91,20 @@ Route::get('/email/verify', function () {
 
         Route::get('search','ResaultController@search')->name('search');
         Route::get('course-with-category/{id}','ResaultController@interests')->name('course-with-category');
+
+        /////////////////////////////////// Route about ///////////////////////////////////////////////
+
+        Route::get('about','AboutController@index')->name('about');
+
+        /////////////////////////////////// Route payment ///////////////////////////////////////////////
+
+        Route::get('checkout/{id}' , 'PaymentController@request')->name('course.check');
+
+        /////////////////////////////////  Route end lesson  ///////////////////////////////////////////
+
+        Route::post('end-lesson','LessonUserController@store')->name('end.lesson');
+
+
 
 
     });

@@ -16,7 +16,20 @@
 
         <div class="corse-box col-xs-12">
             <div class="corse-nav text-center">
+
                 <div class="container">
+                    @if(isset($success))
+                        <div class="alert alert-success text-center">
+                            تم الدفع بنجاح
+                        </div>
+                    @endif
+
+
+                    @if(isset($fail))
+                        <div class="alert alert-danger text-center">
+                            فشلت عملية الدفع
+                        </div>
+                    @endif
                     <ul>
                         @if ($course->teacher_id ==Auth::id())
                         <li>
@@ -59,7 +72,7 @@
                         <li class="rating" data-toggle="tooltip" data-placment="top" title="إضافة تقييم للدورة">
                             <div class="stars">
                                 <form action="{{route('rate.store')}}" method="post" id="addStar">
-@csrf
+                                @csrf
                                     <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                     <input type="hidden" name="course_id" value="{{$course->id}}">
 
@@ -76,6 +89,30 @@
                                 </form>
                             </div>
                         </li>
+
+
+
+
+
+
+                            <li class="rate-area">
+                                @foreach($course->rating as $feeback)
+                                    @if($feeback->rate == 0)
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    @elseif($feeback->rate == 1 || $feeback->rate < 2)
+                                        <span class="glyphicon glyphicon-star" style="color: gold;"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    @endif
+                                @endforeach
+                            </li>
+
                     </ul>
                     <!-- =========================================================================================================================================== -->
 

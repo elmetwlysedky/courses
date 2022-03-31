@@ -7,11 +7,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use App\Models\Interest;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $setting = Setting::get();
+        view::share('setting' , $setting);
+    }
 
     public function index(){
         return view('Site.Course.index',[
@@ -55,8 +62,23 @@ class CourseController extends Controller
     }
 
     public function show($id){
-
-        return view('Site.Course.show',[
+//dd(\request());
+        if (request('id') && request('resourcePath')){
+          $payment_status = $this->payment_status(request('id') && request('resourcePath'));
+            if (isset($payment_status['id'])){
+                $success_payment = true;
+                return view('Site.Course.show',[
+                    'course' => Course::findOrFail($id)
+                ])->with(['success'=> $success_payment]);
+            }else{
+                $fail_payment = true;
+                return view('Site.Course.show',[
+                    'course' => Course::findOrFail($id)
+                ])->with(['fail'=> $fail_payment]);
+            }
+            return redirect()->back();
+        }
+        return view('Site.course.show',[
             'course' => Course::findOrFail($id)
         ]);
     }
@@ -88,8 +110,29 @@ class CourseController extends Controller
     }
 
     public function destroy($id){
-        $course = Course::destroy($id);
+        Course::destroy($id);
         return redirect()->back();
+    }
+
+    private function payment_status( $resourcePath){
+
+        $url = "https://eu-test.oppwa.com/";
+        $url .=$resourcePath;
+        $url .= "?entityId=8a8294174b7ecb28014b9699220015ca";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Authorization:Bearer OGE4Mjk0MTc0YjdlY2IyODAxNGI5Njk5MjIwMDE1Y2N8c3k2S0pzVDg='));
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);// this should be set to true in production
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $responseData = curl_exec($ch);
+        if(curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        return json_decode( $responseData , true);
     }
 
 

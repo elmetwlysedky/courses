@@ -65,7 +65,7 @@ class Course extends Model
         return $this->hasMany(CommentCourse::class,'course_id');
     }
 
-    public function rate(){
+    public function rating(){
         return $this->hasMany(Rate::class , 'user_id');
     }
 

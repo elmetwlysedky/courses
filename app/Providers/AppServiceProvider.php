@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Course;
+use App\Models\Setting;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
@@ -33,9 +34,13 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         View::composer('*', function ($view) {
-            $course = Course::where('active',0)->get();
+            $course = Course::where('active',1)->get();
+            $setting = Setting::all();
 
-            $view->with('auth.login', $course);
+            $view->with('auth.login', $course ,$setting);
         });
+
+
+
     }
 }

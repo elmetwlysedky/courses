@@ -29,10 +29,31 @@
                                 <a href="{{route('site.lesson.edit',$lesson->id)}}">
                                    تعديل الدرس
                                 </a>
+
+
+                            @elseif($lesson->end_lesson)
+                                <a  class="btn-success">
+                                     انهيت هذا الدرس
+                                </a>
                             @else
-                            <a href="#">
-                                لقد انهيت هذا الدرس
-                            </a>
+                             <form action="{{route('end.lesson')}}" method="post" >
+                                    @csrf
+
+                                 @if ($errors->any())
+                                     <div class="alert alert-danger">
+                                         <ul>
+                                             @foreach ($errors->all() as $error)
+                                                 <li>{{ $error }}</li>
+                                             @endforeach
+                                         </ul>
+                                     </div>
+                                 @endif
+
+                                 <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                                 <input type="hidden" name="lesson_id" value="{{$lesson->id}}">
+
+                              <button type="submit" class="btn btn-primary"> انهيت هذا الدرس</button>
+                             </form>
                             @endif
                             <div class="lesson-desc col-xs-12 text-right">
                                 <h1>وصف المحاضرة</h1>

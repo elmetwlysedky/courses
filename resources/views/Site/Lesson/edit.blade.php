@@ -18,7 +18,7 @@
                 <div class="up-form">
 
                     <div class="add_lecture in-one">
-                        {!!Form::model($lesson, ['route' => ['Site.lesson.update', $lesson->id],'class'=>'add-form' ,'method'=>'PATCH','enctype'=>'multipart/form-data'])!!}
+                        {!!Form::model($lesson, ['route' => ['site.lesson.update', $lesson->id],'class'=>'add-form' ,'method'=>'PATCH','enctype'=>'multipart/form-data'])!!}
 
 
                         @if ($errors->any())
@@ -31,7 +31,7 @@
                             </div>
                         @endif
 
-                        @include('Site.Course.form')
+                        @include('Site.Lesson.form')
                         <div class="up_form-item up-confirm">
                             <input type="submit" value="حفظ الدرس">
                         </div>

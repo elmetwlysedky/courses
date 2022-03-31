@@ -14,17 +14,11 @@ class RateController extends Controller
 
         $data = $request->validated();
 
-        Rate::create($data);
+        Rate::updateOrCreate($data);
         return redirect()->back();
     }
 
 
-    public function update(TeacherRequest $request, $id)
-    {
-        $rate = Rate::findOrFail($id);
-        $data = $request->validated();
-        $rate-> update($data);
-        return redirect()->back();
-    }
+
 
 }

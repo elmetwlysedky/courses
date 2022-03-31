@@ -30,12 +30,12 @@
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
-        var pusher = new Pusher('c051ed6d6186e1401622', {
+        var pusher = new Pusher('070accdaed6901a4ab47', {
             cluster: 'eu'
         });
 
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function(data) {
+        var channel = pusher.subscribe('add-course');
+        channel.bind('App\\Events\\AddCourse', function(data) {
             alert(JSON.stringify(data));
         });
     </script>

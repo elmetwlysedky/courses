@@ -5,10 +5,18 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Interest;
+use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class ResaultController extends Controller
 {
+    public function __construct()
+    {
+        $setting = Setting::get();
+        view::share('setting' , $setting);
+    }
+
     public function search(Request $request){
         $all =Interest::all();
         $search = $request->input('search');

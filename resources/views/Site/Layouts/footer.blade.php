@@ -4,11 +4,11 @@
         <div class="footer-sub col-md-2 col-xs-12 text-center pull-right">
             <ul>
                 <li>
-                    <a href="about-us.html">من نحن</a>
+                    <a href="{{route('contact.create')}}">من نحن</a>
                 </li>
 
                 <li>
-                    <a href="contact-us.html">إتصل بنا</a>
+                    <a href="{{route('contact.create')}}">إتصل بنا</a>
                 </li>
             </ul>
         </div>
@@ -19,23 +19,29 @@
         <!-- /.copyrights -->
         <div class="footer-links col-md-2 col-xs-12 pull-left text-center">
             <ul>
+                @foreach($setting as $set)
+                    @if($set->name == 'facebook')
                 <li>
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="facebook">
+                    <a href="https://{{$set->value}}" data-toggle="tooltip" data-placement="top" title="facebook">
                         <i class="fa fa-facebook-square"></i>
                     </a>
                 </li>
-
+                    @endif
+                    @if($set->name == 'twitter')
                 <li>
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="twitter">
+                    <a href="https://{{$set->value}}" data-toggle="tooltip" data-placement="top" title="twitter">
                         <i class="fa fa-twitter-square"></i>
                     </a>
                 </li>
-
+                    @endif
+                    @if($set->name == 'linkedIn')
                 <li>
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="linkedin">
+                    <a href="https://{{$set->value}}" data-toggle="tooltip" data-placement="top" title="linkedin">
                         <i class="fa fa-linkedin-square"></i>
                     </a>
                 </li>
+                    @endif
+                @endforeach
             </ul>
         </div>
         <!-- /.footer-links -->
@@ -52,15 +58,17 @@
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
-    var pusher = new Pusher('c051ed6d6186e1401622', {
+    var pusher = new Pusher('070accdaed6901a4ab47', {
         cluster: 'eu'
     });
 
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
+    var channel = pusher.subscribe('add-course');
+    channel.bind('App\\Events\\AddCourse', function(data) {
         alert(JSON.stringify(data));
     });
 </script>
+
+
 <!-- Javascript Files -->
 
 <script src="/App/js/jquery-2.2.2.min.js" type="text/javascript"></script>

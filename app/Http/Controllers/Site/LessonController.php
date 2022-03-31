@@ -6,10 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LessonRequest;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\LessonUser;
+use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class LessonController extends Controller
 {
+    public function __construct()
+    {
+        $setting = Setting::get();
+        view::share('setting' , $setting);
+    }
     public function index(){
         return view('Site.Lesson.index',[
             'lesson' => Lesson::all()
@@ -41,11 +49,12 @@ class LessonController extends Controller
 
     public function show($id){
         return view('Site.Lesson.show',[
-            'lesson' => Lesson::findOrFail($id)
+            'lesson' => Lesson::findOrFail($id),
+            'end_lesson' => LessonUser::all(),
         ]);
     }
 
-    public function edite($id){
+    public function edit($id){
         return view('Site.Lesson.edit',[
             'lesson' => Lesson::findOrFail($id)
         ]);

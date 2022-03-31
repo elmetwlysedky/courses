@@ -30,7 +30,9 @@ use Illuminate\Support\Facades\Auth;
             Route::resource('course-user','CourseUserController');
             Route::put('course-user-status/{id}','CourseUserController@status')->name('course-user-status');
 
-
+            Route::get('setting' , 'SettingController@index')->name('setting.index');
+            Route::get('setting/edit/{id}', 'SettingController@edit')->name('setting.edit');
+            Route::post('setting/update/{id}', 'SettingController@update')->name('setting.update');
 
 
 

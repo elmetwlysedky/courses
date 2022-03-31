@@ -29,7 +29,7 @@
         <ul class="navbar-nav">
 
 
-            <li class="nav-item dropdown dropdown-notifications">
+            <li class="nav-item dropdown dropdown-notifications ">
                 <a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
                     <i class="icon-bubbles4"></i>
                     <span class="d-md-none ml-2">Messages</span>

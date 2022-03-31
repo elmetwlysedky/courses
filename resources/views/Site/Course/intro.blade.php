@@ -8,11 +8,12 @@
     <div class="intro-box">
         <div class="container">
             <div class="intro-name text-right">
+                <div id="showPayForm"></div>
                 <div class="name-head col-md-7 col-xs-12 pull-right">
                     <h1>{{$course->title}}</h1>
                 </div>
                 <div class="extras col-md-5 col-xs-12">
-                    <span>$ {{$course->price}}</span>
+                    <span id="price">$ {{$course->price}}</span>
                     <div class="intro-rating">
                         <ul>
                             <li>
@@ -55,7 +56,7 @@
             <div class="intro-date col-xs-12 text-right">
                 <h1>
                     <i class="fa fa-calendar"></i>
-                    من : 01 فبراير 2016 إلى : 27 ابريل 2016 (12 اسبوع)
+                    {{$course->created_at->diffForHumans()}}
                 </h1>
 
                 @if ($course->teacher_id ==Auth::id())
@@ -69,14 +70,18 @@
                         <i class="fa fa-cog"></i> اضافة درس
                     </a>
                 @else
-                <a href="#" class="show-credit">
-                    <i class="fa fa-paper-plane"></i> إشترك في الدورة
+                <a  href="{{route('course.check',$course->id)}}" >
+                    <i class="fa fa-paper-plane" ></i> إشترك في الدورة
                 </a>
-                <a href="profile1.html">
+                <a href="{{route('profile')}}">
                     <i class="fa fa-cog"></i> عدل ملفك الشخصي لتستطيع الاشتراك في الدورة
                 </a>
                 @endif
             </div>
+
+
+            <div id="showPayForm"> </div>
+
             <!-- /.intro-date -->
             <div class="intro-details text-right">
                 <p>{{$course->description}}</p>
@@ -96,7 +101,9 @@
                         <!-- /.avatar -->
                         <div class="instructor-data">
                             <a href="#" class="know-teacher" data-toggle="tooltip" data-placement="top" title="اضغط لمعرفة هوية المحاضر">{{$course->teacher->name}}</a>
-                            <p>أستاذ مساعد في كلية الحاسب في جامعة الملك سعود ومستشار لامن المعلومات في مركز التميز لأمن المعلومات في الجامعة حاصل على شهادة البكالوريوس في علوم الحاسب بتقدير امتياز مع مرتبة الشرف الاولى من جامعة الملك سعود حاصل على جائزة الطالب المثالي في جامعة الملك سعود لعام ٢٠٠٣ </p>
+                            <p>{{$course->teacher->degree}}</p>
+                            <p>{{$course->teacher->employment}}</p>
+                            <p>{{$course->teacher->specialization}}</p>
                         </div>
                         <!-- /.instructor-data -->
                     </div>
@@ -115,6 +122,8 @@
                             </li>
 
                             @endforeach
+
+
 
                         </ol>
                     </div>
@@ -169,7 +178,7 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                    <a href="#credit-card" aria-controls="credit-card" role="tab" data-toggle="tab">
+                    <a href="" aria-controls="credit-card" role="tab" data-toggle="tab">
                         <i class="fa fa-credit-card"></i>Credit Card
                     </a>
                 </li>
@@ -185,7 +194,7 @@
                 <div role="tabpanel" class="tab-pane fade active" id="credit-card">...</div>
                 <div role="tabpanel" class="tab-pane fade" id="paypal">
                     <div class="paypal-box text-center">
-                        <a href="#">تأكيد الدفع من خلال البايبال</a>
+                        <a  href="#">تأكيد الدفع من خلال البايبال</a>
                     </div>
                     <!-- end paypal-box -->
                 </div>
@@ -206,4 +215,25 @@
         });
     </script>
 
+{{--    <script >--}}
+{{--        $(document).on('click', '#checkout', function (e) {--}}
+{{--            e.preventDefault();--}}
+{{--            $.ajax({--}}
+{{--                type: 'get',--}}
+{{--                url: "{{route('course.check')}}",--}}
+{{--                data: {--}}
+{{--                    price: $('#price').text(),--}}
+{{--                    course_id: '{{$course -> id}}',--}}
+{{--                },--}}
+{{--                success: function (data) {--}}
+{{--                    if (data.status == true) {--}}
+{{--                        $('#showPayForm').empty().html(data.content);--}}
+{{--                    } else { return 'dont sssssss'--}}
+{{--                    }--}}
+{{--                }, error: function (reject) {--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 @endsection
+

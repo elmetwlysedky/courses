@@ -6,14 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Country;
 use App\Models\Course;
+use App\Models\Setting;
 use App\Models\User;
 use App\Models\UserInterest;
 use Illuminate\Http\Request;
 use App\Models\Interest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\View;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $setting = Setting::get();
+        view::share('setting' , $setting);
+    }
     public function index()
     {
 

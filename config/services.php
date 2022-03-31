@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'paypal'=>[
+        'clint_id' => env('PAYPAL_CLINT_ID'),
+        'clint_secret' => env('PAYPAL_CLINT_SECRET'),
+        'mode' => env('PAYPAL_MODE')
+    ]
 ];

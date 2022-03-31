@@ -12,7 +12,7 @@
             </h2>
             <ul>
                 <li><a class="icon icon-data" href="{{route('main')}}"><i class="fa fa-user"></i> الرئيسية</a></li>
-{{--                <li><a id="sd" class="icon icon-location" href="about-us.html"><i class="fa fa-group"></i>من نحن</a></li>--}}
+                <li><a id="sd" class="icon icon-location" href="{{route('about')}}"><i class="fa fa-group"></i>من نحن</a></li>
                 <li><a class="icon icon-study" href="{{route('site.course.create')}}"><i class="fa fa-plus"></i> اضافة دورة</a></li>
 {{--                <li><a class="icon icon-photo" href="add-lecture.html"><i class="fa fa-plus"></i>اضافة محاضرة</a></li>--}}
 {{--                <li><a class="icon icon-wallet" href=""><i class="fa fa-plus"></i>اضافة اختبار</a></li>--}}
