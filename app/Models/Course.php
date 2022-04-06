@@ -66,7 +66,7 @@ class Course extends Model
     }
 
     public function rating(){
-        return $this->hasMany(Rate::class , 'user_id');
+        return $this->hasMany(Rate::class , 'course_id');
     }
 
     public function test(){

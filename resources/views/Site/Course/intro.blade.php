@@ -16,6 +16,30 @@
                     <span id="price">$ {{$course->price}}</span>
                     <div class="intro-rating">
                         <ul>
+                            @if($rate == 1)
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-star"></i>
+                                </a>
+                            </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li> <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li> <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li> <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li>
+                            @elseif($rate == 2)
                             <li>
                                 <a href="#">
                                     <i class="fa fa-star"></i>
@@ -26,23 +50,145 @@
                                     <i class="fa fa-star"></i>
                                 </a>
                             </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li> <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li> <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li>
+                            @elseif($rate == 3)
                             <li>
                                 <a href="#">
                                     <i class="fa fa-star"></i>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-star"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-star-half-o"></i>
-                                </a>
-                            </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li> <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li>
+                            @elseif($rate == 4)
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li>
+                            @elseif($rate == 5)
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star"></i>
+                                    </a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li><li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li><li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li><li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li><li>
+                                    <a href="#">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                </li>
+                            @endif
+
                         </ul>
                     </div>
+
+
+{{--                    <li class="intro-rating" data-toggle="tooltip" data-placment="top" title="إضافة تقييم للدورة">--}}
+{{--                        <div class="stars">--}}
+
+{{--                                @csrf--}}
+{{--                                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">--}}
+{{--                                <input type="hidden" name="course_id" value="{{$course->id}}">--}}
+
+{{--                                <input class="star star-5" id="star-5" type="radio" name="rate" value="5" @if($rate == 5) checked @endif/>--}}
+{{--                                <label class="star star-5" for="star-5"></label>--}}
+{{--                                <input class="star star-4" id="star-4" type="radio" name="rate" value="4" @if($rate == 4) checked @endif/>--}}
+{{--                                <label class="star star-4" for="star-4"></label>--}}
+{{--                                <input class="star star-3" id="star-3" type="radio" name="rate" value="3" @if($rate == 3) checked @endif />--}}
+{{--                                <label class="star star-3" for="star-3"></label>--}}
+{{--                                <input class="star star-2" id="star-2" type="radio" name="rate" value="2" @if($rate == 2) checked @endif/>--}}
+{{--                                <label class="star star-2" for="star-2"@if($rate == 2) checked @endif></label>--}}
+{{--                                <input class="star star-1" id="star-1" type="radio" name="rate" value="1"/>--}}
+{{--                                <label class="star star-1" for="star-1" @if($rate == 1) checked @endif></label>--}}
+
+
+{{--                        </div>--}}
+{{--                    </li>--}}
                     <!-- end intro-rating -->
                 </div>
             </div>
@@ -215,25 +361,6 @@
         });
     </script>
 
-{{--    <script >--}}
-{{--        $(document).on('click', '#checkout', function (e) {--}}
-{{--            e.preventDefault();--}}
-{{--            $.ajax({--}}
-{{--                type: 'get',--}}
-{{--                url: "{{route('course.check')}}",--}}
-{{--                data: {--}}
-{{--                    price: $('#price').text(),--}}
-{{--                    course_id: '{{$course -> id}}',--}}
-{{--                },--}}
-{{--                success: function (data) {--}}
-{{--                    if (data.status == true) {--}}
-{{--                        $('#showPayForm').empty().html(data.content);--}}
-{{--                    } else { return 'dont sssssss'--}}
-{{--                    }--}}
-{{--                }, error: function (reject) {--}}
-{{--                }--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
+
 @endsection
 

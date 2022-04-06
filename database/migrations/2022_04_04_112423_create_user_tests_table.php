@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('message_recipients', function (Blueprint $table) {
+        Schema::create('user_tests', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('test_id')->constrained('test_courses')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('message_course_id')->constrained('message_courses')->cascadeOnDelete();
+            $table->enum('check',[1,2,3,4]);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message_recipients');
+        Schema::dropIfExists('user_tests');
     }
 };

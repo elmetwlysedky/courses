@@ -86,36 +86,7 @@
 <script src="/App/js/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
 <script src="/App/js/script.js" type="text/javascript"></script>
 <script src="{{asset('js/notify.js')}}"></script>
-<script type="text/javascript">
-    $('#tabsleft').bootstrapWizard({
-        'tabClass': 'nav nav-tabs',
-        'debug': false,
-        onTabShow: function (tab, navigation, index) {
-            var $total = navigation.find('li').length;
-            var $current = index + 1;
-            var $percent = ($current / $total) * 100;
-            $('#tabsleft .progress-bar').css({
-                width: $percent + '%'
-            });
 
-            // If it's the last tab then hide the last button and show the finish instead
-            if ($current >= $total) {
-                $('#tabsleft').find('.pager .next').hide();
-                $('#tabsleft').find('.pager .finish').show();
-                $('#tabsleft').find('.pager .finish').removeClass('disabled');
-            } else {
-                $('#tabsleft').find('.pager .next').show();
-                $('#tabsleft').find('.pager .finish').hide();
-            }
-
-        }
-    });
-
-    $('#tabsleft .finish').click(function () {
-        alert('Finished!, Starting over!');
-        $('#tabsleft').find("a[href*='tabsleft-tab1']").trigger('click');
-    });
-</script>
 @yield('footer')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -125,9 +96,6 @@
         $('.js-example-basic-multiple').select2();
     });
 </script>
-
-
-
 
 
 </body>

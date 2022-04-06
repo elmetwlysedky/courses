@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use App\Models\Interest;
+use App\Models\Rate;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,11 +15,6 @@ use Illuminate\Support\Facades\View;
 
 class CourseController extends Controller
 {
-    public function __construct()
-    {
-        $setting = Setting::get();
-        view::share('setting' , $setting);
-    }
 
     public function index(){
         return view('Site.Course.index',[
@@ -28,8 +24,15 @@ class CourseController extends Controller
     }
 
     public function intro($id){
+        $rate = Course::find($id);
+        if(count($rate->rating) > 0) {
+            $rate = $rate->rating->first()->rate;
+        }else{
+            $rate = '0';
+        }
         return view('Site.Course.intro',[
-            'course'=> Course::findOrFail($id)
+            'course'=> Course::findOrFail($id),
+            'rate' => $rate
         ]);
     }
 
@@ -62,28 +65,37 @@ class CourseController extends Controller
     }
 
     public function show($id){
-//dd(\request());
+
         if (request('id') && request('resourcePath')){
-          $payment_status = $this->payment_status(request('id') && request('resourcePath'));
+          $payment_status = $this->payment_status(request('resourcePath'));
+//dd($payment_status);
             if (isset($payment_status['id'])){
                 $success_payment = true;
+
                 return view('Site.Course.show',[
                     'course' => Course::findOrFail($id)
                 ])->with(['success'=> $success_payment]);
+
             }else{
                 $fail_payment = true;
-                return view('Site.Course.show',[
-                    'course' => Course::findOrFail($id)
-                ])->with(['fail'=> $fail_payment]);
+                return redirect()->back()->with(['fail'=> $fail_payment]);
             }
-            return redirect()->back();
+
+        }
+
+        $course = Course::find($id);
+        if(count($course->rating) > 0) {
+            $rate = $course->rating->where('user_id',Auth::id())->first()->rate;
         }
         return view('Site.course.show',[
-            'course' => Course::findOrFail($id)
+            'course' => Course::findOrFail($id),
+            'rate'=> $rate ?? 0
+
         ]);
     }
 
     public function edit($id){
+
         return view('Site.Course.edit',[
             'course' => Course::findOrFail($id),
             'interests' => Interest::pluck('name','id'),
@@ -132,6 +144,7 @@ class CourseController extends Controller
             return curl_error($ch);
         }
         curl_close($ch);
+
         return json_decode( $responseData , true);
     }
 

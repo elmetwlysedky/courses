@@ -14,7 +14,14 @@ class RateController extends Controller
 
         $data = $request->validated();
 
-        Rate::updateOrCreate($data);
+        Rate::updateOrCreate([
+            'user_id' => $request->user_id,
+            'course_id' => $request->course_id
+        ],[
+            'user_id' => $request->user_id,
+            'course_id' => $request->course_id,
+            'rate' => $request->rate
+        ]);
         return redirect()->back();
     }
 

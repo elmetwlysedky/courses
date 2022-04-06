@@ -82,6 +82,7 @@
             <figure>
                 <div><img src="/storage/{{$item->image}}" alt="img05" class="img-responsive"></div>
                 <figcaption class="text-right">
+
                     <h1>
                         <label>اسم الكورس</label>
                         <span>{{$item->title}}</span>

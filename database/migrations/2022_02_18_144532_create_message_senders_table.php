@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('message_senders', function (Blueprint $table) {
+        Schema::create('message_courses', function (Blueprint $table) {
             $table->id();
-            $table->longText('body');
-            $table->foreignId('teacher_id')->constrained('users')->cascadeOnDelete();
+            $table->longText('message');
+            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->timestamps();
         });
     }

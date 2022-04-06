@@ -25,11 +25,7 @@
                     @endif
 
 
-                    @if(isset($fail))
-                        <div class="alert alert-danger text-center">
-                            فشلت عملية الدفع
-                        </div>
-                    @endif
+
                     <ul>
                         @if ($course->teacher_id ==Auth::id())
                         <li>
@@ -76,42 +72,20 @@
                                     <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                     <input type="hidden" name="course_id" value="{{$course->id}}">
 
-                                    <input class="star star-5" id="star-5" type="radio" name="rate" value="5"/>
+                                    <input class="star star-5" id="star-5" type="radio" name="rate" value="5" @if($rate == 5) checked @endif/>
                                     <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="rate" value="4"/>
+                                    <input class="star star-4" id="star-4" type="radio" name="rate" value="4" @if($rate == 4) checked @endif/>
                                     <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="rate" value="3"/>
+                                    <input class="star star-3" id="star-3" type="radio" name="rate" value="3" @if($rate == 3) checked @endif />
                                     <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="rate" value="2"/>
+                                    <input class="star star-2" id="star-2" type="radio" name="rate" value="2" @if($rate == 2) checked @endif/>
                                     <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="rate" value="1"/>
+                                    <input class="star star-1" id="star-1" type="radio" name="rate" value="1" @if($rate == 1) checked @endif/>
                                     <label class="star star-1" for="star-1"></label>
+
                                 </form>
                             </div>
                         </li>
-
-
-
-
-
-
-                            <li class="rate-area">
-                                @foreach($course->rating as $feeback)
-                                    @if($feeback->rate == 0)
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    @elseif($feeback->rate == 1 || $feeback->rate < 2)
-                                        <span class="glyphicon glyphicon-star" style="color: gold;"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    @endif
-                                @endforeach
-                            </li>
 
                     </ul>
                     <!-- =========================================================================================================================================== -->
@@ -173,7 +147,7 @@
                 <div class="container">
                     <div class="certf text-center animated bounceIn">
                         <h1>تهانينا لقد  انتهيت من هذه الدورة بنجاح </h1>
-                        <a href="#">
+                        <a href="{{route('download',$course->id)}}">
                             <i class="fa fa-print"></i> تستطيع طباعة الشهادة
                         </a>
                     </div>

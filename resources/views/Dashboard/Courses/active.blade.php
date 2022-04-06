@@ -56,8 +56,8 @@
                                     @method('PUT')
                                     @csrf
                                     <select onchange="this.form.submit()" name="active">
-                                        <option class="btn-success" value="0"{{$item ->active_string == 0 ? 'desabled selected' : ''}}> Actived</option>
-                                        <option class="btn-danger" value="1"{{$item ->active_string == 1 ? 'desabled selected' : ''}}>not Active</option>
+                                        <option class="btn-success" value="1"{{$item ->active_string == 1 ? 'desabled selected' : ''}}> Actived</option>
+                                        <option class="btn-danger" value="0"{{$item ->active_string == 0 ? 'desabled selected' : ''}}>not Active</option>
                                     </select>
                                 </form>
                             </td>

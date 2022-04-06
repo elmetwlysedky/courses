@@ -19,7 +19,7 @@
             <div class="container">
                 <div class="cat-item">
                     <div class="cat-inner col-md-6 col-sm-6 col-xs-6 pull-right">
-                        <a href="#" class="show-cat">علوم الحاسب<i class="fa fa-caret-down"></i></a>
+                        <a href="#" class="show-cat">ابحث في هذه المجالات<i class="fa fa-caret-down"></i></a>
                         <div class="hidden-cat">
                             <ul>
                                 @foreach($interests as $interest)

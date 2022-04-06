@@ -68,6 +68,7 @@ Route::get('/email/verify', function () {
         Route::get('test/show/{id}','TestController@show')->name('test.show');
         Route::get('test/edit/{id}','TestController@edit')->name('test.edit')->middleware('teacher');
         Route::get('test/update/{id}','TestController@update')->name('test.update')->middleware('teacher');
+        Route::post('test/test/{id}','TestController@test')->name('test');
 
 
         /////////////////////////////////// Route rate ///////////////////////////////////////////////
@@ -103,6 +104,10 @@ Route::get('/email/verify', function () {
         /////////////////////////////////  Route end lesson  ///////////////////////////////////////////
 
         Route::post('end-lesson','LessonUserController@store')->name('end.lesson');
+
+        /////////////////////////////////  Route Certificate ////////////////////////////////////////
+
+        Route::get('course/certificate/{id}','CertificateController@download')->name('download');
 
 
 
