@@ -14,6 +14,7 @@ class CourseUsers extends Model
         'active',
         'finish',
         'certificate',
+        'transaction_id'
     ];
 
     public function user(){

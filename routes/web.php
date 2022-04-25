@@ -46,8 +46,8 @@ Route::get('/email/verify', function () {
         Route::get('course/create','CourseController@create')->name('site.course.create')->middleware('teacher');
         Route::post('course/store','CourseController@store')->name('site.course.store')->middleware('teacher');
         Route::get('course/edit/{id}','CourseController@edit')->name('site.course.edit')->middleware('teacher');
-        Route::get('course/update/{id}','CourseController@update')->name('site.course.update')->middleware('teacher');
-        Route::delete('course/destroy/{id}','CourseController@destroy')->name('site.course.destroy')->middleware('teacher');
+        Route::patch('course/update/{id}','CourseController@update')->name('site.course.update')->middleware('teacher');
+        Route::get('course/destroy/{id}','CourseController@destroy')->name('site.course.destroy')->middleware('teacher');
         Route::get('course/all','CourseController@index')->name('site.course.all');
 
 
@@ -57,7 +57,7 @@ Route::get('/email/verify', function () {
         Route::get('lesson/create/{id}','LessonController@create')->name('site.lesson.create')->middleware('teacher');
         Route::post('lesson/store','LessonController@store')->name('site.lesson.store')->middleware('teacher');
         Route::get('lesson/edit/{id}','LessonController@edit')->name('site.lesson.edit')->middleware('teacher');
-        Route::get('lesson/update/{id}','LessonController@update')->name('site.lesson.update')->middleware('teacher');
+        Route::patch('lesson/update/{id}','LessonController@update')->name('site.lesson.update')->middleware('teacher');
         Route::get('lesson/all','LessonController@index')->name('site.lesson.all');
         Route::get('lesson/destroy/{id}','LessonController@destroy')->name('site.lesson.destroy')->middleware('teacher');
 
@@ -109,7 +109,9 @@ Route::get('/email/verify', function () {
 
         Route::get('course/certificate/{id}','CertificateController@download')->name('download');
 
+        /////////////////////////////////  Route Subscribe ////////////////////////////////////////
 
+        Route::post('subscribe/{id}','SubscribeController@store')->name('subscribe');
 
 
     });

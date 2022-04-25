@@ -15,7 +15,7 @@
                 @csrf
                 <div class="form-item col-xs-12">
                     <div class="input-container col-md-10 col-xs-12 input-lft pull-right">
-                        <input type="text" name="search" placeholder="ابحث عن جميع الكورسات من هنا">
+                        <input type="text" name="search"  placeholder="ابحث عن جميع الكورسات من هنا">
                     </div>
                     <!-- /.input-container -->
                     <div class="btn-container col-md-1 btn-right">
@@ -34,28 +34,28 @@
                 <!-- /.form-item -->
                 <div class="form-advanced col-xs-12 adv-left">
                     <div class="advanced-item col-md-3 col-xs-12 pull-right">
-                        <h2>ابحث بسعر الكورس</h2>
-                        <input type="text" placeholder="ابحث بإسم المدرس">
+                        <h2>ابحث  باسم المدرس</h2>
+                        <input name="teacher"  type="text" placeholder="ابحث بإسم المدرس">
                     </div>
                     <!-- /.advanced-item -->
                     <div class="advanced-item col-md-3 col-xs-12 pull-right">
-                        <h2>ابحث بسعر الكورس</h2>
-                        <input type="text" placeholder="ابحث بإسم الكورس">
+                        <h2>ابحث اسم الكورس</h2>
+                        <input name="title" type="text" placeholder="ابحث بإسم الكورس">
                     </div>
                     <!-- /.advanced-item -->
                     <div class="advanced-item col-md-3 col-xs-12 pull-right">
-                        <h2>ابحث بسعر الكورس</h2>
-                        <input type="text" placeholder="ابحث بنوع الكورس">
+                        <h2>ابحث نوع الكورس</h2>
+                        <input name="type" type="text" placeholder="ابحث بنوع الكورس">
                     </div>
                     <!-- /.advanced-item -->
                     <div class="advanced-item col-md-3 col-xs-12 adv-right pull-right">
                         <h2>ابحث بسعر الكورس</h2>
 
-                        <input placeholder="من" type="number" class="pull-right price-from" data-toggle="tooltip" data-placement="top" title="مـن">
-                        <input placeholder="إلي" type="number" class="price-to" data-toggle="tooltip" data-placement="top" title="إلـي">
+                        <input placeholder="من" name="from" type="number" class="pull-right price-from" data-toggle="tooltip" data-placement="top" title="مـن">
+                        <input placeholder="إلي" name="to" type="number" class="price-to" data-toggle="tooltip" data-placement="top" title="إلـي">
                         <div class="text-right price-spec">
                             <label id="ko">
-                                <input type="checkbox" class="price-free"> مجاني
+                                <input type="checkbox" class="price-free" name="free" > مجاني
                             </label>
                         </div>
                     </div>

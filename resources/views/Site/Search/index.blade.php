@@ -69,17 +69,29 @@
                                             <label>عدد الطلبة المشتركة</label>
                                             <span>{{$item->users->count()}}</span>
 
-                                        </h1>
+{{--                                        </h1>--}}
+{{--                                        <h1>--}}
+{{--                                            <label>تاريخ بداية الكورس</label>--}}
+{{--                                            <span>{{$item->created_at->format('d/m/Y')}}0</span>--}}
+
+{{--                                        </h1>--}}
+{{--                                        <h1>--}}
+{{--                                            <label>عدد دروس الكورس</label>--}}
+{{--                                            <span>{{$item->lesson->count()}}</span>--}}
+
+{{--                                        </h1>--}}
+
                                         <h1>
-                                            <label>تاريخ بداية الكورس</label>
-                                            <span>{{$item->created_at->format('d/m/Y')}}0</span>
+                                            <label>عدد دروس الكورس</label>
+                                            <span>{{$item->price}}</span>
 
                                         </h1>
                                         <h1>
                                             <label>عدد دروس الكورس</label>
-                                            <span>{{$item->lesson->count()}}</span>
+                                            <span>{{$item->free_string}}</span>
 
                                         </h1>
+
                                         <a href="{{route('course.intro',$item->id)}}">
                                             <i class="fa fa-eye"></i> مشاهدة الكورس
                                         </a>

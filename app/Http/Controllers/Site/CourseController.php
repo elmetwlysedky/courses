@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Site;
 use App\Events\AddCourse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
+use App\Http\Requests\CourseUserRequest;
 use App\Models\Course;
+use App\Models\CourseUsers;
 use App\Models\Interest;
 use App\Models\Rate;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -16,26 +19,30 @@ use Illuminate\Support\Facades\View;
 class CourseController extends Controller
 {
 
-    public function index(){
-        return view('Site.Course.index',[
-            'courses' => Course::where('active','1')->paginate(6),
+    public function index()
+    {
+        return view('Site.Course.index', [
+            'courses' => Course::where('active', '1')->paginate(6),
             'interests' => Interest::all(),
         ]);
     }
 
-    public function intro($id){
-        $rate = Course::find($id);
-        if(count($rate->rating) > 0) {
-            $rate = $rate->rating->first()->rate;
-        }else{
-            $rate = '0';
-        }
-        return view('Site.Course.intro',[
-            'course'=> Course::findOrFail($id),
-            'rate' => $rate
-        ]);
-    }
+    public function intro($id)
+    {
+        $course = Course::findOrFail($id);
 
+        if (count($course->rating) > 0) {
+            $rate = $course->rating->avg('rate');
+        }else{
+            $rate = 0;
+        }
+//        dd(round($rate));
+        return view('Site.Course.intro', [
+            'course' => $course,
+            'rate' =>  round($rate)
+        ]);
+
+}
     public function create(){
         return view('Site.Course.create',[
         'interests' => Interest::pluck('name','id')
@@ -58,7 +65,7 @@ class CourseController extends Controller
                 'teacher_id' => Auth()->user()->name,
                 'title' => $request->title,
         ];
-        event(new AddCourse($data));
+        broadcast(new AddCourse($data));
 
         return redirect()->route('site.course.all');
 
@@ -66,15 +73,21 @@ class CourseController extends Controller
 
     public function show($id){
 
+        $course = Course::findOrFail($id);
+        $user_rating =  $course->rating()->where('user_id', Auth::id())
+            ->where('course_id', $course->id)->first()->rate ?? 0;
+
         if (request('id') && request('resourcePath')){
           $payment_status = $this->payment_status(request('resourcePath'));
-//dd($payment_status);
+// dd($payment_status);
             if (isset($payment_status['id'])){
                 $success_payment = true;
+$transaction_id= $payment_status['id'];
+            $subscribe = $this->subscribe($transaction_id ,$course->id);
+//dd($subscribe);
 
-                return view('Site.Course.show',[
-                    'course' => Course::findOrFail($id)
-                ])->with(['success'=> $success_payment]);
+            return view('Site.course.show',compact('course','user_rating'))
+                       ->with(['success'=> $success_payment]);
 
             }else{
                 $fail_payment = true;
@@ -83,15 +96,8 @@ class CourseController extends Controller
 
         }
 
-        $course = Course::find($id);
-        if(count($course->rating) > 0) {
-            $rate = $course->rating->where('user_id',Auth::id())->first()->rate;
-        }
-        return view('Site.course.show',[
-            'course' => Course::findOrFail($id),
-            'rate'=> $rate ?? 0
 
-        ]);
+        return view('Site.course.show',compact('course','user_rating'));
     }
 
     public function edit($id){
@@ -126,7 +132,7 @@ class CourseController extends Controller
         return redirect()->back();
     }
 
-    private function payment_status( $resourcePath){
+    private function payment_status( $resourcePath ){
 
         $url = "https://eu-test.oppwa.com/";
         $url .=$resourcePath;
@@ -149,5 +155,13 @@ class CourseController extends Controller
     }
 
 
+    public function subscribe($transaction_id ,$id){
+        CourseUsers::create([
+            'course_id' => $id,
+            'user_id' => Auth::id(),
+            'transaction_id' => $transaction_id ,
+        ]);
+
+    }
 
 }

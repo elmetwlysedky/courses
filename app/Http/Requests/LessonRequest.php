@@ -28,8 +28,8 @@ class LessonRequest extends FormRequest
             'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20000',
             'image' => 'nullable|image',
             'description' => 'required|string',
-            'sequence' => 'required|string',
-            'course_id' => 'required'
+            'sequence' => 'required|string|unique:lessons,sequence,' . request()->segment(3) . ',id',
+            'course_id' => 'sometimes'
         ];
     }
 }

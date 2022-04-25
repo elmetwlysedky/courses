@@ -57,12 +57,12 @@
                                 <i class="fa fa-bell"></i> التنويهات
                             </a>
                         </li>
-                        <li>
+{{--                        <li>--}}
 
-                            <a href="#" class="add-fav-dis" data-toggle="tooltip" data-placement="top" title="إضافة الي المفضلة">
-                                <i class="fa fa-heart"></i>
-                            </a>
-                        </li>
+{{--                            <a href="#" class="add-fav-dis" data-toggle="tooltip" data-placement="top" title="إضافة الي المفضلة">--}}
+{{--                                <i class="fa fa-heart"></i>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
 
                         <li class="rating" data-toggle="tooltip" data-placment="top" title="إضافة تقييم للدورة">
@@ -72,16 +72,17 @@
                                     <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                     <input type="hidden" name="course_id" value="{{$course->id}}">
 
-                                    <input class="star star-5" id="star-5" type="radio" name="rate" value="5" @if($rate == 5) checked @endif/>
+                                    <input class="star star-5" id="star-5" type="radio" name="rate" value="5"  @if( $user_rating == 5) checked @endif />
                                     <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="rate" value="4" @if($rate == 4) checked @endif/>
+                                    <input class="star star-4" id="star-4" type="radio" name="rate" value="4"  @if( $user_rating == 4) checked @endif/>
                                     <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="rate" value="3" @if($rate == 3) checked @endif />
+                                    <input class="star star-3" id="star-3" type="radio" name="rate" value="3" @if( $user_rating == 3) checked @endif />
                                     <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="rate" value="2" @if($rate == 2) checked @endif/>
+                                    <input class="star star-2" id="star-2" type="radio" name="rate" value="2" @if( $user_rating == 2) checked @endif/>
                                     <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="rate" value="1" @if($rate == 1) checked @endif/>
+                                    <input class="star star-1" id="star-1" type="radio" name="rate" value="1" @if( $user_rating == 1) checked @endif/>
                                     <label class="star star-1" for="star-1"></label>
+
 
                                 </form>
                             </div>

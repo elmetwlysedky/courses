@@ -73,7 +73,7 @@ class LessonController extends Controller
             $data['video'] = $path_video;
         }
         $lesson->update($data);
-        return redirect()->route('site.lesson.index');
+        return redirect()->route('site.lesson.show',$lesson->id);
     }
 
     public function destroy($id){

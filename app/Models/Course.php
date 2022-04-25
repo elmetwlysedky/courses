@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -24,7 +25,7 @@ class Course extends Model
 
 
 
-    protected $appends =['free_string','active_string'];
+    protected $appends =['free_string','active_string','subscribe'];
 
     public function getFreeStringAttribute(){
         $arr=['0' => 'مجاني',
@@ -40,6 +41,10 @@ class Course extends Model
         return $arr[$this->active];
     }
 
+    public function getSubscribeAttribute(){
+        $subdcribe = CourseUsers::where('course_id', $this->id)->where('user_id',auth()->user()->id)->first();
+        return $subdcribe;
+    }
 
     public function teacher(){
         return $this->belongsTo(User::class , 'teacher_id');
@@ -75,6 +80,10 @@ class Course extends Model
 
     public function notice(){
         return $this->hasMany(NoticeCourse::class,'course_id');
+    }
+
+    public function certificate(){
+        return $this->hasOne(Certificate::class,'course_id');
     }
 
 }

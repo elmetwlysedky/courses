@@ -30,6 +30,9 @@
                                    تعديل الدرس
                                 </a>
 
+                                <a href="{{route('site.lesson.destroy',$lesson->id)}}" >
+                                    <i class="fa fa-cog"></i> حذف
+                                </a>
 
                             @elseif($lesson->end_lesson)
                                 <a  class="btn-success">

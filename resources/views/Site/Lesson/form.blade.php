@@ -1,4 +1,4 @@
-<input type="hidden" name="course_id" value="{{$course->id}}">
+
 
 <div class="lecture-item">
     <h1>اسم الدرس</h1>

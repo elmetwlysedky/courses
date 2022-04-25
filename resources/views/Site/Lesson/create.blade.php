@@ -31,7 +31,7 @@
                                     </ul>
                                 </div>
                             @endif
-
+                        <input type="hidden" name="course_id" value="{{$course->id}}">
 
 
                         @include('Site.Lesson.form')

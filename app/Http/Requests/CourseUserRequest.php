@@ -29,6 +29,7 @@ class CourseUserRequest extends FormRequest
             'active' => 'nullable',
             'finish' => 'nullable',
             'certificate' => 'nullable',
+            'transaction' => 'nullable'
         ];
     }
 }

@@ -4829,3 +4829,30 @@ label.star:before {
     content: '\f006';
     font-family: FontAwesome;
 }
+/*        \\\\\\\\\\\\\\\\\\\\\\\   DARK MODE //////////////////////          */
+
+/*body , body *{background-color:#232323!important;color:white!important;border-color:#333!important;box-shadow:unset!important}*/
+/**/
+/*body{*/
+/*    --main-color:#0194fe;*/
+/*    --second-color:#0194fe;*/
+/*    --third-color:#0194fe;*/
+/*    --main-background:#f7f7f7;*/
+/*    --second-background:#fff;*/
+/*    --main-font-color:#232323;*/
+/*    --second-font-color:#555;*/
+/*    --third-font-color:#888;*/
+/*    --another-color-1:#0194fe;*/
+/*    --another-color-2:#0194fe;*/
+/*    --border-color:#f1f1f1;*/
+/*    --scrollbar-color:#ddd*/
+/*}*/
+
+/*body.night {*/
+/*    --main-background:#232323;*/
+/*    --main-font-color:#fff*/
+/*}*/
+/*body{*/
+/*    background: var(--main-background);*/
+/*    color:var(--main-font-color)*/
+/*}*/
