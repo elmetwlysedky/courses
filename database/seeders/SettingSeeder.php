@@ -18,14 +18,12 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-//        DB::table('settings')->insert([
-//            'name' => Str::random(10),
-//            'value' => Str::random(10),
-//            'type' => 'text',
-//        ]);
+        $setting = array(
+            array( 'name' => 'facebook','value'=>'facebook.com','type' => 'text'),
+            array('name' => 'twitter' ,'value'=>'twitter.com','type' => 'text'),
+            array( 'name' => 'linkedIn' ,'value'=>'linkedIn.com','type' => 'text'),
+        );
+        DB::table('settings')->insert($setting);
 
-        Setting::factory()
-            ->count(5)
-            ->create();
     }
 }
