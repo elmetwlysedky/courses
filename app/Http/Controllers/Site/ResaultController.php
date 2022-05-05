@@ -25,10 +25,6 @@ class ResaultController extends Controller
         $title = $request->input('title');
         $teacher = $request->input('teacher');
         $teacher_id = User::where('name', 'LIKE' ,"%{$teacher}%")->first()->id;
-//        $type = $request->input('type');
-
-        $from = $request->input('from');
-        $to = $request->input('to');
         $search = $request->input('search');
 
         if (isset($search)){
@@ -46,8 +42,8 @@ class ResaultController extends Controller
                 ->get();
             if (!isset($request->free)) {
                 $courses =Course::query()
-                    ->Where('price', '<=', $to)
-                    ->Where('price', '>=', $from)
+                    ->Where('price', '<=', $request->to)
+                    ->Where('price', '>=', $request->from)
                     ->where('title', 'LIKE', "%{$title}%")
                     ->Where('teacher_id', $teacher_id)
                     ->Where('free', 1)

@@ -82,7 +82,7 @@
                                    </div>
                                 </form>
 
-                                       <form method="POST" action="{{ route('logout') }}">
+                                       <form method="get" action="{{ route('logout') }}">
                                         @csrf
 
                                         <button type="submit" class="up_form-item up-confirm">

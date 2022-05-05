@@ -18,10 +18,14 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('settings')->insert([
-            'name' => Str::random(10),
-            'value' => Str::random(10),
-            'type' => Str::random(10),
-        ]);
+//        DB::table('settings')->insert([
+//            'name' => Str::random(10),
+//            'value' => Str::random(10),
+//            'type' => 'text',
+//        ]);
+
+        Setting::factory()
+            ->count(5)
+            ->create();
     }
 }
